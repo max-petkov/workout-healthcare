@@ -13,7 +13,7 @@
   <nav>
     <div class="container d-flex justify-between align-center">
       <div class="brand">
-        <h3>WorkoutRoutine & Health Care</h3>
+        <h3>Workout & Health Care</h3>
       </div>
       <div id="greetings" class="align-center d-none">
         <a href="#">Hello, <span id="profileName">-</span></a>
@@ -23,8 +23,15 @@
             d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
         </svg>
       </div>
-      <button id="showCreateProfile" class="btn btn-outline-white">Create Profile</button>
+      <button id="showCreateProfile" class="btn btn-outline-white">CREATE PROFILE</button>
     </div>
+    <!--Nav menu -->
+    <ul id="navMenu" class="nav-menu">
+      <li id="editProfile" class="mb-1rem">📃 <a href="#" class="text-dark">Edit Profile</a></li>
+      <li class="mb-1rem">📲 <a href="#" class="text-dark">Calculators</a></li>
+      <li class="mb-1rem">🍖 <a href="#" class="text-dark">Meals</a></li>
+      <li id="removeProfile">❌ <a href="#" class="text-dark">Remove Profile</a></li>
+    </ul>
   </nav>
   <main>
     <div class="container d-flex vh-100">
@@ -63,56 +70,58 @@
           <p>Workout Calories</p>
         </div>
       </section>
-      <section class="info flex-2 pt-2rem">
-        <div class="d-flex justify-center">
-          <ul id="profileInfo" class="personal-info mr-2rem">
-            <h3>Personal information:</h3>
-            <li>name: -</li>
-            <li>age: -</li>
-            <li>weight: -</li>
-            <li>height: -</li>
-            <li>BMI: -</li>
-            <li>BMR: -</li>
-            <li>Workout routine: -</li>
-            <li>Workout Calories: -</li>
+      <section class="info flex-2 d-flex p-2rem">
+        <div class="flex-1">
+          <ul id="profileInfo" class="personal-info mb-1rem">
+            <h3 class="mb-1">Personal information:</h3>
+            <li class="mb-1"><b>Name:</b> -</li>
+            <li class="mb-1"><b>Age:</b> -</li>
+            <li class="mb-1"><b>Weight:</b> -</li>
+            <li class="mb-1"><b>Height:</b> -</li>
+            <li class="mb-1"><b>BMI:</b> -</li>
+            <li class="mb-1"><b>BMR:</b> -</li>
+            <li class="mb-1"><b>Workout routine:</b> -</li>
+            <li class="mb-1"><b>Workout Calories:</b> -</li>
           </ul>
           <ul class="one-rep-max-info">
-            <h3>One Rep Max</h3>
-            <li>
-              Benchpress:
+            <h3 class="mb-1">One Rep Max</h3>
+            <li class="mb-1 d-flex align-center">
+              <span>Benchpress: -</span>
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                class="bi bi-chevron-down" viewBox="0 0 16 16">
+                class="ml-1 bi bi-chevron-down" viewBox="0 0 16 16">
                 <path fill-rule="evenodd"
                   d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
               </svg>
             </li>
-            <li>Squad:
+            <li class="mb-1 d-flex align-center"><span>Squad: -</span>
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                class="bi bi-chevron-down" viewBox="0 0 16 16">
+                class="ml-1 bi bi-chevron-down" viewBox="0 0 16 16">
                 <path fill-rule="evenodd"
                   d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
               </svg>
             </li>
-            <li>Deadlift(Sumo):
+            <li class="mb-1 d-flex align-center">
+              <span>Deadlift(Sumo): -</span>
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                class="bi bi-chevron-down" viewBox="0 0 16 16">
+                class="ml-1 bi bi-chevron-down" viewBox="0 0 16 16">
                 <path fill-rule="evenodd"
                   d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
               </svg>
             </li>
-            <li>Deadlift(Classic):
+            <li class="mb-1 d-flex align-center">
+              <span>Deadlift(Classic): -</span>
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                class="bi bi-chevron-down" viewBox="0 0 16 16">
+                class="ml-1 bi bi-chevron-down" viewBox="0 0 16 16">
                 <path fill-rule="evenodd"
                   d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
               </svg>
             </li>
           </ul>
         </div>
-        <div id="meals" class="d-flex-col align-center">
+        <div id="meals" class="flex-1 d-flex-col align-center">
           <h3 class="text-center mb-1 mt-1rem">Generate meals:</h3>
           <div>
-            <button class="btn">Bulk meals</button>
+            <button class="btn mr-1rem">Bulk meals</button>
             <button class="btn">Cut meals</button>
           </div>
         </div>
@@ -122,7 +131,7 @@
   <!-- Account  -->
   <form id="personalInfo" class="form-personal-data d-flex" action="#" method="POST">
     <div class="d-flex justify-between align-center mb-2rem">
-      <h2>Create Profile:</h2>
+      <h2>Create profile:</h2>
       <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-x"
         viewBox="0 0 16 16">
         <path
@@ -130,9 +139,13 @@
       </svg>
     </div>
     <input type="text" class="mb-1rem" name="name" placeholder="Enter name..." />
-    <input type="text" class="mb-1rem" name="age" placeholder="Enter age" />
-    <input type="text" class="mb-1rem" name="weight" placeholder="Enter weight..." />
-    <input type="text" class="mb-1rem" name="height" placeholder="Enter height..." />
+    <div></div>
+    <input type="text" class="mb-1rem" name="age" placeholder="Enter age..." />
+    <div></div>
+    <input type="text" class="mb-1rem" name="weight" placeholder="Enter weight (kg)..." />
+    <div></div>
+    <input type="text" class="mb-1rem" name="height" placeholder="Enter height (cm)..." />
+    <div></div>
     <div class="mb-1rem">
       <label for="workOutRoutine"><b>Workout Routine</b></label>
       <div class="mt-1">
@@ -159,6 +172,7 @@
         </label>
       </div>
     </div>
+    <div></div>
     <input type="submit" class="btn" value="Submit" />
   </form>
   <footer class="d-flex-col align-center p-fix-bottom">
