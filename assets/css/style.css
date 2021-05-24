@@ -85,6 +85,9 @@ input[type="radio"] {
 }
 
 /* Sizing */
+.ml-1 {
+  margin-left: 0.5rem;
+}
 .mr-1 {
   margin-right: 0.5rem;
 }
@@ -153,7 +156,7 @@ input[type="radio"] {
   width: 100%;
   border: 2px solid black;
   border-radius: 4px;
-  padding: 1rem;
+  padding: 0.8rem;
   margin-bottom: 1rem;
 }
 

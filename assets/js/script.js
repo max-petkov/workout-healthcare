@@ -67,8 +67,12 @@ personalInfoForm.addEventListener("submit", function (e) {
   <li>Workout routine: ${profile.personalInfo.workout}</li>
   <li>Workout Calories: ${profile.personalInfo.workoutCalories} kcal</li>
   `;
-
   document.getElementById("profileInfo").innerHTML = html;
+  showCreateProfile.classList.add("d-none");
+  document.getElementById("profileName").innerHTML = profile.personalInfo.name;
+  document.getElementById("greetings").classList.remove("d-none");
+  document.getElementById("greetings").classList.add("d-flex");
+
   console.log(profile);
 });
 
