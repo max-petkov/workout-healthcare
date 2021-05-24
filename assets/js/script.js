@@ -4,6 +4,9 @@ const personalInfoForm = document.querySelector("#personalInfo");
 const showCreateProfile = document.getElementById("showCreateProfile");
 const hideCreateProfile = document.querySelector(".bi-x");
 const formProfile = document.getElementById("personalInfo");
+const profileInfo = document.getElementById("profileInfo");
+const profileName = document.getElementById("profileName");
+const greetings = document.getElementById("greetings");
 const profile = {
   personalInfo: {},
   oneRepMax: {
@@ -67,11 +70,14 @@ personalInfoForm.addEventListener("submit", function (e) {
   <li>Workout routine: ${profile.personalInfo.workout}</li>
   <li>Workout Calories: ${profile.personalInfo.workoutCalories} kcal</li>
   `;
-  document.getElementById("profileInfo").innerHTML = html;
+
   showCreateProfile.classList.add("d-none");
-  document.getElementById("profileName").innerHTML = profile.personalInfo.name;
-  document.getElementById("greetings").classList.remove("d-none");
-  document.getElementById("greetings").classList.add("d-flex");
+  formProfile.style.opacity = 0;
+  formProfile.style.right = "-512px";
+  profileInfo.innerHTML = html;
+  profileName.innerHTML = profile.personalInfo.name;
+  greetings.classList.remove("d-none");
+  greetings.classList.add("d-flex");
 
   console.log(profile);
 });
