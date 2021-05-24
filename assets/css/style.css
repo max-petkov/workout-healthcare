@@ -1,0 +1,177 @@
+/* General */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+nav,
+footer {
+  padding: 1rem 0;
+  width: 100%;
+  background-color: #0f0f0f;
+  color: #fff;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+}
+
+input[type="text"] {
+  padding: 0.4rem;
+  border-radius: 4px;
+}
+input[type="radio"] {
+  margin-bottom: 0.5rem;
+}
+
+/* Text */
+.text-center {
+  text-align: center;
+}
+
+/* Container */
+.container {
+  padding: 0 2rem;
+  width: 100%;
+}
+
+/* Display */
+.d-none {
+  display: none;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.d-flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.flex-1 {
+  flex: 1;
+}
+.flex-2 {
+  flex: 2;
+}
+.flex-3 {
+  flex: 3;
+}
+
+/* Position */
+.p-fix-bottom {
+  position: fixed;
+  bottom: 0;
+}
+
+.p-rel {
+  position: relative;
+}
+
+/* Sizing */
+.mr-1 {
+  margin-right: 0.5rem;
+}
+.mb-1 {
+  margin-bottom: 0.5rem;
+}
+.mt-1 {
+  margin-top: 0.5rem;
+}
+
+.mt-1rem {
+  margin-top: 1rem;
+}
+
+.mb-1rem {
+  margin-bottom: 1rem;
+}
+.mb-2rem {
+  margin-bottom: 2rem;
+}
+
+.mr-2rem {
+  margin-right: 2rem;
+}
+.pr-2rem {
+  padding-right: 2rem;
+}
+.pt-2rem {
+  padding-top: 2rem;
+}
+
+.vh-100 {
+  height: 100vh;
+}
+
+/* UI Elements */
+.hr-length {
+  width: 300px;
+}
+
+.calculators {
+  border-right: 2px solid black;
+}
+
+.btn {
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-outline-white {
+  border: 1px solid #fff;
+  background-color: transparent;
+  color: #fff;
+  transition: 0.3s;
+}
+
+.btn-outline-white:hover {
+  color: #0f0f0f;
+  background-color: #fff;
+}
+
+.calculator-tab {
+  width: 100%;
+  border: 2px solid black;
+  border-radius: 4px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.bi-chevron-down,
+.bi-x {
+  cursor: pointer;
+}
+
+.form-personal-data {
+  flex-direction: column;
+  position: absolute;
+  top: 70px;
+  right: -512px;
+  padding: 2rem;
+  border: 1px solid black;
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 5px 15px #0f0f0f;
+  opacity: 0;
+  transition: 0.5s;
+}

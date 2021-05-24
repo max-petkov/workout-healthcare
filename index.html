@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="assets/css/style.css">
+  <title>Document</title>
+</head>
+
+<body>
+  <nav>
+    <div class="container d-flex justify-between align-center">
+      <div class="brand">
+        <h3>WorkoutRoutine & Health Care</h3>
+      </div>
+      <!-- <div class="menu d-flex align-center">
+        <a href="#">Hello,<span>TwinkleToe</span></a>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down"
+          viewBox="0 0 16 16">
+          <path fill-rule="evenodd"
+            d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+        </svg>
+      </div> -->
+      <button id="showCreateProfile" class="btn btn-outline-white">Create Profile</button>
+    </div>
+  </nav>
+  <main>
+    <div class="container d-flex vh-100">
+      <section class="calculators flex-1 pr-2rem pt-2rem">
+        <h2 class="text-center mb-1">Calculators</h2>
+        <div class="calculator-tab d-flex align-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+            class="mr-1 bi bi-chevron-down" viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+              d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+          </svg>
+          <p>One Rep Max</p>
+        </div>
+        <div class="calculator-tab d-flex align-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+            class="mr-1 bi bi-chevron-down" viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+              d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+          </svg>
+          <p>BMI</p>
+        </div>
+        <div class="calculator-tab d-flex align-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+            class="mr-1 bi bi-chevron-down" viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+              d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+          </svg>
+          <p>BMR</p>
+        </div>
+        <div class="calculator-tab d-flex align-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+            class="mr-1 bi bi-chevron-down" viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+              d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+          </svg>
+          <p>Workout Calories</p>
+        </div>
+      </section>
+      <section class="info flex-2 pt-2rem">
+        <div class="d-flex justify-center">
+          <ul id="profileInfo" class="personal-info mr-2rem">
+            <h3>Personal information:</h3>
+            <li>name: -</li>
+            <li>age: -</li>
+            <li>weight: -</li>
+            <li>height: -</li>
+            <li>BMI: -</li>
+            <li>BMR: -</li>
+            <li>Workout routine: -</li>
+            <li>Workout Calories: -</li>
+          </ul>
+          <ul class="one-rep-max-info">
+            <h3>One Rep Max</h3>
+            <li>
+              Benchpress:
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-chevron-down" viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                  d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+              </svg>
+            </li>
+            <li>Squad:
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-chevron-down" viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                  d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+              </svg>
+            </li>
+            <li>Deadlift(Sumo):
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-chevron-down" viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                  d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+              </svg>
+            </li>
+            <li>Deadlift(Classic):
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-chevron-down" viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                  d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+              </svg>
+            </li>
+          </ul>
+        </div>
+        <div id="meals" class="d-flex-col align-center">
+          <h3 class="text-center mb-1 mt-1rem">Generate meals:</h3>
+          <div>
+            <button class="btn">Bulk meals</button>
+            <button class="btn">Cut meals</button>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+  <!-- Account  -->
+  <form id="personalInfo" class="form-personal-data d-flex" action="#" method="POST">
+    <div class="d-flex justify-between align-center mb-2rem">
+      <h2>Create Profile:</h2>
+      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-x"
+        viewBox="0 0 16 16">
+        <path
+          d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+      </svg>
+    </div>
+    <input type="text" class="mb-1rem" name="name" placeholder="Enter name..." />
+    <input type="text" class="mb-1rem" name="age" placeholder="Enter age" />
+    <input type="text" class="mb-1rem" name="weight" placeholder="Enter weight..." />
+    <input type="text" class="mb-1rem" name="height" placeholder="Enter height..." />
+    <div class="mb-1rem">
+      <label for="workOutRoutine"><b>Workout Routine</b></label>
+      <div class="mt-1">
+        <input type="radio" name="routine" value="1" />
+        <label for="#">Sedentary (little or no exercise)</label>
+      </div>
+      <div>
+        <input type="radio" name="routine" value="2" />
+        <label for="#">Lightly active (light exercise/sports 1-3 days/week)</label>
+      </div>
+      <div>
+        <input type="radio" name="routine" value="3" />
+        <label for="#">Moderately active (moderate exercise/sports 3-5 days/week)</label>
+      </div>
+      <div>
+        <input type="radio" name="routine" value="4" />
+        <label for="#">Very active (hard exercise/sports 6-7 days a week)
+        </label>
+      </div>
+      <div>
+        <input type="radio" name="routine" value="5" />
+        <label for="#">If you are extra active (very hard exercise/sports & a physical
+          job)
+        </label>
+      </div>
+    </div>
+    <input type="submit" class="btn" value="Submit" />
+  </form>
+  <footer class="d-flex-col align-center p-fix-bottom">
+    <p class="text-center">Made by Developers names</p>
+    <hr class="hr-length">
+    <a href="mailto:maxy.dp@abv.bg" class="text-center">maxy.dp@abv.bg</a>
+  </footer>
+  <script src="assets/js/script.js"></script>
+</body>
+
+</html>
