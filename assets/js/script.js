@@ -11,11 +11,22 @@ const profileName = document.getElementById("profileName");
 const greetings = document.getElementById("greetings");
 const navMenu = document.getElementById("navMenu");
 const profileData = JSON.parse(localStorage.getItem("profile"));
+const calcContainer = document.querySelector(".calculators");
+const formOneRepMax = document.getElementById("oneRepMax");
+const formBMI = document.getElementById("bmi");
+const formBMR = document.getElementById("bmr");
+const formWorkoutRoutine = document.getElementById("workoutRoutine");
 const fadeAnimation = function (element) {
   element.classList.toggle("fade-in-animation");
 };
 const renderErrorValid = function (el, msg) {
   el.style.marginBottom = "0.5rem";
+  el.nextElementSibling.style.color = "red";
+  el.nextElementSibling.textContent = msg;
+};
+const renderSuccessValid = function (el, msg) {
+  el.style.marginBottom = "0.5rem";
+  el.nextElementSibling.style.color = "green";
   el.nextElementSibling.textContent = msg;
 };
 
@@ -32,7 +43,8 @@ const profile = {
     return BMI.toFixed(1);
   },
   calcOneRepMax: function (weight) {
-    this.oneRepMax.benchPress = weight * 1.09703 + 14.2546;
+    const oneRepMax = weight * 1.09703 + 14.2546;
+    return oneRepMax;
   },
   calcBodyNeeds: function (weight, height, age) {
     const BMR = 10 * weight + 6.25 * height - 5 * age + 5;
@@ -79,42 +91,65 @@ createProfile.addEventListener("submit", function (e) {
   const age = document.querySelector('input[name="age"]');
   const weight = document.querySelector('input[name="weight"]');
   const height = document.querySelector('input[name="height"]');
-  const workoutRoutine = this.querySelector('input[type="radio"]');
+  const radioBtnsContainer = document.getElementById("routineWorkout");
+  const workoutRoutine = document.querySelector(
+    'input[name="routine"]:checked'
+  );
   let valid = true;
 
   if (!name.value) {
-    renderErrorValid(name, "Field can not be empty");
+    renderErrorValid(name, "Field can not be empty!");
     valid = false;
+  } else {
+    if (name.value.length >= 50) {
+      renderErrorValid(name, "Name must be lower than 50 symbols!");
+      valid = false;
+    } else {
+      renderSuccessValid(name, "OK!");
+    }
   }
 
   if (!age.value) {
-    renderErrorValid(age, "Field can not be empty");
+    renderErrorValid(age, "Field can not be empty!");
     valid = false;
   } else {
     if (!age.value.match(/[0-9]/g)) {
       renderErrorValid(age, "Field must contain numbers!");
       valid = false;
+    } else {
+      renderSuccessValid(age, "OK!");
     }
   }
 
   if (!weight.value) {
-    renderErrorValid(weight, "Field can not be empty");
+    renderErrorValid(weight, "Field can not be empty!");
     valid = false;
   } else {
     if (!weight.value.match(/[0-9]/g)) {
       renderErrorValid(weight, "Field must contain numbers!");
       valid = false;
+    } else {
+      renderSuccessValid(weight, "OK!");
     }
   }
 
   if (!height.value) {
-    renderErrorValid(height, "Field can not be empty");
+    renderErrorValid(height, "Field can not be empty!");
     valid = false;
   } else {
     if (!height.value.match(/[0-9]/g)) {
       renderErrorValid(height, "Field must contain numbers!");
       valid = false;
+    } else {
+      renderSuccessValid(height, "OK!");
     }
+  }
+
+  if (!workoutRoutine) {
+    renderErrorValid(radioBtnsContainer, "You need to select one option!");
+    valid = false;
+  } else {
+    renderSuccessValid(radioBtnsContainer, "OK!");
   }
 
   if (valid) {
@@ -177,3 +212,59 @@ removeProfile.addEventListener("click", function () {
   }
 });
 greetings.addEventListener("click", () => fadeAnimation(navMenu));
+
+// Accordation
+calcContainer.addEventListener("click", function (e) {
+  e.target
+    .closest(".calculator-tab")
+    ?.nextElementSibling.classList.toggle("calc-content--active");
+  e.target
+    .closest(".calculator-tab")
+    ?.querySelector(".toggle-slide")
+    .classList.toggle("rotate-chevron");
+});
+
+// Calculators
+formOneRepMax.addEventListener("submit", function (e) {
+  e.preventDefault();
+  const weight = this.firstElementChild;
+  let valid = true;
+  // Validation
+  if (!weight.value) {
+    renderErrorValid(weight, "Field can not be empty!");
+    valid = false;
+  } else {
+    if (!weight.value.match(/[0-9]/gi)) {
+      renderErrorValid(weight, "You need to put only numbers");
+      valid = false;
+    } else {
+      renderSuccessValid(weight, "OK!");
+    }
+  }
+  // Result
+  if (valid) {
+    this.nextElementSibling.firstElementChild.textContent = `Result: ${profile
+      .calcOneRepMax(+weight.value)
+      .toFixed(1)} kg`;
+  }
+  // Save into localstorage
+  if (profileData && valid) {
+    const saveBtn = document.createElement("button");
+    saveBtn.classList.add("btn", "ml-1");
+    saveBtn.textContent = "Save to profile";
+    this.nextElementSibling.appendChild(saveBtn);
+  }
+});
+
+formBMI.addEventListener("submit", function (e) {
+  e.preventDefault();
+  this.nextElementSibling.textContent = "UNDER CONSTRUCTION!";
+});
+formBMR.addEventListener("submit", function (e) {
+  e.preventDefault();
+  this.nextElementSibling.textContent = "UNDER CONSTRUCTION!";
+});
+formWorkoutRoutine.addEventListener("submit", function (e) {
+  e.preventDefault();
+  this.nextElementSibling.textContent = "UNDER CONSTRUCTION!";
+});
