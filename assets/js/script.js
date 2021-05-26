@@ -269,10 +269,7 @@ formOneRepMax.addEventListener("submit", function (e) {
   }
   // Save into localstorage
   if (profileData && valid) {
-    const saveBtn = document.createElement("button");
-    saveBtn.classList.add("btn", "ml-1");
-    saveBtn.textContent = "Save to profile";
-    this.nextElementSibling.appendChild(saveBtn);
+    this.nextElementSibling.lastElementChild.classList.remove("d-none");
   }
 });
 
