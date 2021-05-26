@@ -33,9 +33,43 @@
     </ul>
   </nav>
   <main>
-    <div class="container d-flex">
+    <section id="loginOptions" class="container">
+      <div id="introduction">
+        <h2 class="text-center m-auto mt-2rem w-60">Calculate your BMI, BMR, 1RepMax, generate meals based on your
+          results and
+          many
+          more...
+        </h2>
+        <div class="d-flex flex-wrap justify-center pb-2rem pt-2rem">
+          <ul class="option-card d-flex-col justify-between mr-1rem">
+            <div>
+              <h3 class="mb-1rem">When creating profile:</h3>
+              <li class="mb-1 d-flex align-center">✅ Profile information will be stored in browser's localstorage</li>
+              <li class="mb-1">✅ Automatic BMI calculation</li>
+              <li class="mb-1">✅ Automatic BMR calculation</li>
+              <li class="mb-1">✅ Automatic calories calculation based on your workout routine</li>
+              <li class="mb-1">✅ Dashboard with calculation results</li>
+              <li class="mb-1">✅ Generate Bulk & Cut meals</li>
+              <li>✅ Additional calculators (1RepMax, etc...)</li>
+            </div>
+            <button id="showCreateProfile" class="btn d-block m-auto mt-1rem">Create Profile</button>
+          </ul>
+          <ul class="option-card d-flex-col justify-between">
+            <div>
+              <h3 class="mb-1rem">When using as Guest:</h3>
+              <li class="mb-1">✅ All Calculators are available</li>
+              <li class="mb-1">✅ Dashboard with calculation results</li>
+              <li>❌ Information will NOT be stored to the browser's localstorage
+              </li>
+            </div>
+            <button id="logInGuest" class="btn d-block m-auto mt-1rem">LogIn as Guest</button>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <div id="profile" class="container d-none">
       <section class="calculators flex-1 pr-2rem pt-2rem pb-2rem">
-        <h2 class="text-center mb-1">Calculators</h2>
+        <h2 class="text-center mb-1rem">Calculators</h2>
         <!-- Calculate 1Rep Max -->
         <div class="mb-1rem">
           <div class="calculator-tab d-flex align-center">
@@ -181,19 +215,7 @@
         </div>
       </section>
       <section class="info flex-2 d-flex pt-2rem pb-2rem pl-2rem">
-        <div id="introduction" class="d-flex-col">
-          <h3 class="text-center">Create your own profile, which will be saved on your browser's localstorage!</h3>
-          <i class="text-center d-block mt-1">(Your profile will be kept even after you close the window)</i>
-          <ul class="mt-1rem">
-            <h4 class="mb-1">It will calculate your:</h4>
-            <li class="mb-1">✅ BMI</li>
-            <li class="mb-1">✅ BMR</li>
-            <li class="mb-1">✅ Calories based on your workout routine</li>
-            <li>✅ Generate Bulk or Cut meals based on you calculations</li>
-          </ul>
-          <button id="showCreateProfile" class="btn d-block m-auto mt-1rem">CREATE PROFILE</button>
-        </div>
-        <div id="personalInfoContainer" class="flex-1 d-none">
+        <div id="personalInfoContainer" class="flex-1">
           <ul id="profileInfo" class="personal-info mb-1rem">
             <h3 class="mb-1">Personal information:</h3>
             <li class="mb-1"><b>Name:</b> -</li>
@@ -205,7 +227,7 @@
             <li class="mb-1"><b>Workout routine:</b> -</li>
             <li class="mb-1"><b>Workout Calories:</b> -</li>
           </ul>
-          <ul class="one-rep-max-info">
+          <ul class="one-rep-max-info d-none">
             <h3 class="mb-1">One Rep Max</h3>
             <li class="mb-1 d-flex align-center">
               <span>Benchpress: -</span>
@@ -220,7 +242,7 @@
             </li>
           </ul>
         </div>
-        <div id="mealsContainer" class="flex-1 d-none align-center">
+        <div id="mealsContainer" class="flex-1 d-flex-col align-center">
           <h3 class="text-center mb-1">Generate meals:</h3>
           <div class="m-auto">
             <button class="btn mr-1rem">Bulk meals</button>

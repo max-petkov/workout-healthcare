@@ -10,6 +10,8 @@ const formProfile = document.getElementById("personalInfo");
 const profileInfo = document.getElementById("profileInfo");
 const profileName = document.getElementById("profileName");
 const profileData = JSON.parse(localStorage.getItem("profile"));
+const profileLogIn = document.getElementById("profile");
+const loginOptions = document.getElementById("loginOptions");
 const greetings = document.getElementById("greetings");
 const navMenu = document.getElementById("navMenu");
 const introduction = document.getElementById("introduction");
@@ -42,10 +44,14 @@ const renderProfile = function (obj) {
   <li class="mb-1"><b>Age:</b> ${obj?.age}</li>
   <li class="mb-1"><b>Weight:</b> ${obj?.weight} kg</li>
   <li class="mb-1"><b>Height:</b> ${obj?.height} cm</li>
-  <li class="mb-1"><b>BMI:</b> ${obj?.BMI} (${profile.renderBMI(obj?.BMI)})</li>
-  <li class="mb-1"><b>BMR:</b> ${obj?.BMR} kcal</li>
+  <li class="mb-1"><b>BMI:</b> ${obj?.BMI.toFixed(1)} (${profile.renderBMI(
+    obj?.BMI
+  )})</li>
+  <li class="mb-1"><b>BMR:</b> ${obj?.BMR.toFixed(1)} kcal</li>
   <li class="mb-1"><b>Workout routine:</b> ${obj?.workout}</li>
-  <li class="mb-1"><b>Workout Calories:</b> ${obj?.workoutCalories} kcal</li>
+  <li class="mb-1"><b>Workout Calories:</b> ${obj?.workoutCalories.toFixed(
+    1
+  )} kcal</li>
   `;
   profileInfo.innerHTML = html;
   profileName.innerHTML = obj?.name;
@@ -190,13 +196,11 @@ createProfile.addEventListener("submit", function (e) {
 // Render localStorage data
 if (profileData) {
   renderProfile(profileData);
+  loginOptions.classList.add("d-none");
   greetings.classList.remove("d-none");
   greetings.classList.add("d-flex");
-  introduction.classList.remove("d-flex-col");
-  introduction.classList.add("d-none");
-  containerPersonalInfo.classList.remove("d-none");
-  containerMeals.classList.remove("d-none");
-  containerMeals.classList.add("d-flex-col");
+  profileLogIn.classList.remove("d-none");
+  profileLogIn.classList.add("d-flex");
 }
 
 // Navigation menu
