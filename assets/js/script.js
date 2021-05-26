@@ -1,5 +1,6 @@
 "use strict";
 
+// Variables
 const createProfile = document.querySelector("#personalInfo");
 const editProfile = document.getElementById("editProfile");
 const removeProfile = document.getElementById("removeProfile");
@@ -8,14 +9,19 @@ const hideCreateProfile = document.querySelector(".bi-x");
 const formProfile = document.getElementById("personalInfo");
 const profileInfo = document.getElementById("profileInfo");
 const profileName = document.getElementById("profileName");
+const profileData = JSON.parse(localStorage.getItem("profile"));
 const greetings = document.getElementById("greetings");
 const navMenu = document.getElementById("navMenu");
-const profileData = JSON.parse(localStorage.getItem("profile"));
+const introduction = document.getElementById("introduction");
 const calcContainer = document.querySelector(".calculators");
 const formOneRepMax = document.getElementById("oneRepMax");
 const formBMI = document.getElementById("bmi");
 const formBMR = document.getElementById("bmr");
 const formWorkoutRoutine = document.getElementById("workoutRoutine");
+const containerPersonalInfo = document.getElementById("personalInfoContainer");
+const containerMeals = document.getElementById("mealsContainer");
+
+// Functions
 const fadeAnimation = function (element) {
   element.classList.toggle("fade-in-animation");
 };
@@ -177,23 +183,20 @@ createProfile.addEventListener("submit", function (e) {
     const personalInfoJSON = JSON.stringify(profile.personalInfo);
     localStorage.setItem("profile", personalInfoJSON);
 
-    // Render data into HTML
-    renderProfile(profile.personalInfo);
-
-    // Remove create button and add greetings menu
-    fadeAnimation(formProfile);
-    showCreateProfile.classList.add("d-none");
-    greetings.classList.remove("d-none");
-    greetings.classList.add("d-flex");
+    location.reload();
   }
 });
 
 // Render localStorage data
 if (profileData) {
   renderProfile(profileData);
-  showCreateProfile.classList.add("d-none");
   greetings.classList.remove("d-none");
   greetings.classList.add("d-flex");
+  introduction.classList.remove("d-flex-col");
+  introduction.classList.add("d-none");
+  containerPersonalInfo.classList.remove("d-none");
+  containerMeals.classList.remove("d-none");
+  containerMeals.classList.add("d-flex-col");
 }
 
 showCreateProfile.addEventListener("click", () => fadeAnimation(formProfile));

@@ -23,7 +23,6 @@
             d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
         </svg>
       </div>
-      <button id="showCreateProfile" class="btn btn-outline-white">CREATE PROFILE</button>
     </div>
     <!--Nav menu -->
     <ul id="navMenu" class="nav-menu">
@@ -35,7 +34,7 @@
   </nav>
   <main>
     <div class="container d-flex">
-      <section class="calculators flex-1 pr-2rem pt-2rem">
+      <section class="calculators flex-1 pr-2rem pt-2rem pb-2rem">
         <h2 class="text-center mb-1">Calculators</h2>
         <!-- Calculate 1Rep Max -->
         <div class="mb-1rem">
@@ -134,7 +133,7 @@
           </div>
         </div>
         <!-- Calculate Workout Calories -->
-        <div class="mb-1rem">
+        <div>
           <div class="calculator-tab d-flex align-center">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
               class="toggle-slide mr-1 bi bi-chevron-down" viewBox="0 0 16 16">
@@ -180,10 +179,15 @@
             <div></div>
           </div>
         </div>
-
       </section>
-      <section class="info flex-2 d-flex p-2rem">
-        <div class="flex-1">
+      <section class="info flex-2 d-flex pt-2rem pb-2rem pl-2rem">
+        <div id="introduction" class="d-flex-col justify-center align-center">
+          <h2 class="text-center">You can create your own profile, which will be saved on your browser's localstorage!
+          </h2>
+          <i class="text-center d-block mt-1">(Your profile will be kept even after you close the window)</i>
+          <button id="showCreateProfile" class="btn d-block m-auto mt-1rem">CREATE PROFILE</button>
+        </div>
+        <div id="personalInfoContainer" class="flex-1 d-none">
           <ul id="profileInfo" class="personal-info mb-1rem">
             <h3 class="mb-1">Personal information:</h3>
             <li class="mb-1"><b>Name:</b> -</li>
@@ -210,9 +214,9 @@
             </li>
           </ul>
         </div>
-        <div id="meals" class="flex-1 d-flex-col align-center">
+        <div id="mealsContainer" class="flex-1 d-none align-center">
           <h3 class="text-center mb-1">Generate meals:</h3>
-          <div>
+          <div class="m-auto">
             <button class="btn mr-1rem">Bulk meals</button>
             <button class="btn">Cut meals</button>
           </div>
@@ -220,7 +224,7 @@
       </section>
     </div>
   </main>
-  
+
   <!-- Account  -->
   <form id="personalInfo" class="form-personal-data d-flex" action="#" method="POST">
     <div class="d-flex justify-between align-center mb-2rem">

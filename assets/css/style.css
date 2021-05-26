@@ -1,5 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600&display=swap");
 
+:root {
+  --color-dark: #303030;
+  --color-white: #fff;
+}
+
 /* General */
 * {
   margin: 0;
@@ -16,13 +21,13 @@ nav,
 footer {
   padding: 1rem 0;
   width: 100%;
-  background-color: #0f0f0f;
-  color: #fff;
+  background-color: var(--color-dark);
+  color: var(--color-white);
 }
 
 a {
   text-decoration: none;
-  color: #fff;
+  color: var(--color-white);
 }
 
 input[type="text"] {
@@ -43,24 +48,27 @@ input[type="radio"] {
   margin-bottom: 0.5rem;
 }
 
+.container {
+  padding: 0 4rem;
+  width: 100%;
+}
+
 /* Text */
 .text-center {
   text-align: center;
 }
 
 .text-dark {
-  color: #0f0f0f;
-}
-
-/* Container */
-.container {
-  padding: 0 2rem;
-  width: 100%;
+  color: var(--color-dark);
 }
 
 /* Display */
 .d-none {
   display: none;
+}
+
+.d-block {
+  display: block;
 }
 
 .d-flex {
@@ -104,7 +112,11 @@ input[type="radio"] {
   position: relative;
 }
 
-/* Sizing */
+/* Margin & Padding */
+.m-auto {
+  margin: 0 auto;
+}
+
 .ml-1 {
   margin-left: 0.5rem;
 }
@@ -142,6 +154,12 @@ input[type="radio"] {
 .pt-2rem {
   padding-top: 2rem;
 }
+.pb-2rem {
+  padding-bottom: 2rem;
+}
+.pl-2rem {
+  padding-left: 2rem;
+}
 
 .p-2rem {
   padding: 2rem;
@@ -157,7 +175,7 @@ input[type="radio"] {
 }
 
 .calculators {
-  border-right: 2px solid black;
+  border-right: 2px solid var(--color-dark);
 }
 
 .btn {
@@ -174,20 +192,20 @@ input[type="radio"] {
 }
 
 .btn-outline-white {
-  border: 1px solid #fff;
+  border: 1px solid var(--color-white);
   background-color: transparent;
-  color: #fff;
+  color: var(--color-white);
   transition: 0.3s;
 }
 
 .btn-outline-white:hover {
-  color: #0f0f0f;
-  background-color: #fff;
+  color: var(--color-dark);
+  background-color: var(--color-white);
 }
 
 .calculator-tab {
   width: 100%;
-  border: 2px solid black;
+  border: 2px solid var(--color-dark);
   border-radius: 4px;
   padding: 0.8rem;
 }
@@ -204,10 +222,10 @@ input[type="radio"] {
   top: 70px;
   right: -640px;
   padding: 2rem;
-  border: 1px solid black;
-  background-color: #fff;
+  border: 1px solid var(--color-dark);
+  background-color: var(--color-white);
   border-radius: 4px;
-  box-shadow: 0 5px 15px #0f0f0f;
+  box-shadow: 0 5px 15px var(--color-dark);
   opacity: 0;
   transition: 0.5s;
 }
@@ -215,14 +233,14 @@ input[type="radio"] {
 .nav-menu {
   position: absolute;
   right: -512px;
-  border: 2px solid #0f0f0f;
+  border: 2px solid var(--color-dark);
   border-radius: 4px;
   padding: 2rem;
-  background-color: #fff;
+  background-color: var(--color-white);
   list-style-type: none;
-  color: #000;
+  color: var(--color-dark);
   width: 256px;
-  box-shadow: 0 3px 15px #000;
+  box-shadow: 0 3px 15px var(--color-dark);
   opacity: 0;
   transition: 0.7s;
 }
@@ -244,7 +262,7 @@ input[type="radio"] {
   margin: 0 auto;
   height: auto;
   padding: 1rem;
-  border: 2px solid black;
+  border: 2px solid var(--color-dark);
   border-top: transparent;
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
@@ -254,4 +272,5 @@ input[type="radio"] {
 .rotate-chevron {
   transform: rotate(180deg);
   transition: 0.4s;
+  overflow: hidden;
 }
