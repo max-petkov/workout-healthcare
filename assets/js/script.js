@@ -199,6 +199,7 @@ if (profileData) {
   containerMeals.classList.add("d-flex-col");
 }
 
+// Navigation menu
 showCreateProfile.addEventListener("click", () => fadeAnimation(formProfile));
 hideCreateProfile.addEventListener("click", () => fadeAnimation(formProfile));
 editProfile.addEventListener("click", function () {
@@ -226,7 +227,7 @@ calcContainer.addEventListener("click", function (e) {
     .classList.toggle("rotate-chevron");
 });
 
-// Calculators
+// 1 Rep Max Calculator
 formOneRepMax.addEventListener("submit", function (e) {
   e.preventDefault();
   const weight = this.firstElementChild;
