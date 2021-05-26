@@ -29,6 +29,21 @@ const renderSuccessValid = function (el, msg) {
   el.nextElementSibling.style.color = "green";
   el.nextElementSibling.textContent = msg;
 };
+const renderProfile = function (obj) {
+  const html = `
+  <h3 class="mb-1">Personal information:</h3>
+  <li class="mb-1"><b>Name:</b> ${obj?.name}</li>
+  <li class="mb-1"><b>Age:</b> ${obj?.age}</li>
+  <li class="mb-1"><b>Weight:</b> ${obj?.weight} kg</li>
+  <li class="mb-1"><b>Height:</b> ${obj?.height} cm</li>
+  <li class="mb-1"><b>BMI:</b> ${obj?.BMI} (${profile.renderBMI(obj?.BMI)})</li>
+  <li class="mb-1"><b>BMR:</b> ${obj?.BMR} kcal</li>
+  <li class="mb-1"><b>Workout routine:</b> ${obj?.workout}</li>
+  <li class="mb-1"><b>Workout Calories:</b> ${obj?.workoutCalories} kcal</li>
+  `;
+  profileInfo.innerHTML = html;
+  profileName.innerHTML = obj?.name;
+};
 
 const profile = {
   personalInfo: {},
@@ -66,22 +81,6 @@ const profile = {
   },
 };
 
-const renderProfile = function (obj) {
-  const html = `
-  <h3 class="mb-1">Personal information:</h3>
-  <li class="mb-1"><b>Name:</b> ${obj?.name}</li>
-  <li class="mb-1"><b>Age:</b> ${obj?.age}</li>
-  <li class="mb-1"><b>Weight:</b> ${obj?.weight} kg</li>
-  <li class="mb-1"><b>Height:</b> ${obj?.height} cm</li>
-  <li class="mb-1"><b>BMI:</b> ${obj?.BMI} (${profile.renderBMI(obj?.BMI)})</li>
-  <li class="mb-1"><b>BMR:</b> ${obj?.BMR} kcal</li>
-  <li class="mb-1"><b>Workout routine:</b> ${obj?.workout}</li>
-  <li class="mb-1"><b>Workout Calories:</b> ${obj?.workoutCalories} kcal</li>
-  `;
-  profileInfo.innerHTML = html;
-  profileName.innerHTML = obj?.name;
-};
-
 // Creating Profile
 createProfile.addEventListener("submit", function (e) {
   e.preventDefault();
@@ -113,11 +112,11 @@ createProfile.addEventListener("submit", function (e) {
     renderErrorValid(age, "Field can not be empty!");
     valid = false;
   } else {
-    if (!age.value.match(/[0-9]/g)) {
-      renderErrorValid(age, "Field must contain numbers!");
-      valid = false;
-    } else {
+    if (Number.isInteger(+age.value)) {
       renderSuccessValid(age, "OK!");
+    } else {
+      renderErrorValid(age, "Field must contain integers!");
+      valid = false;
     }
   }
 
@@ -125,7 +124,7 @@ createProfile.addEventListener("submit", function (e) {
     renderErrorValid(weight, "Field can not be empty!");
     valid = false;
   } else {
-    if (!weight.value.match(/[0-9]/g)) {
+    if (!weight.value.match(/^\d*\.?\d*$/g)) {
       renderErrorValid(weight, "Field must contain numbers!");
       valid = false;
     } else {
@@ -137,11 +136,11 @@ createProfile.addEventListener("submit", function (e) {
     renderErrorValid(height, "Field can not be empty!");
     valid = false;
   } else {
-    if (!height.value.match(/[0-9]/g)) {
-      renderErrorValid(height, "Field must contain numbers!");
-      valid = false;
-    } else {
+    if (Number.isInteger(+height.value)) {
       renderSuccessValid(height, "OK!");
+    } else {
+      renderErrorValid(height, "Value must be in centimeters!");
+      valid = false;
     }
   }
 
@@ -234,13 +233,14 @@ formOneRepMax.addEventListener("submit", function (e) {
     renderErrorValid(weight, "Field can not be empty!");
     valid = false;
   } else {
-    if (!weight.value.match(/[0-9]/gi)) {
-      renderErrorValid(weight, "You need to put only numbers");
+    if (!weight.value.match(/^\d*\.?\d*$/g)) {
+      renderErrorValid(weight, "Field must contain numbers!");
       valid = false;
     } else {
       renderSuccessValid(weight, "OK!");
     }
   }
+
   // Result
   if (valid) {
     this.nextElementSibling.firstElementChild.textContent = `Result: ${profile
