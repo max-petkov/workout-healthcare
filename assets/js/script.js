@@ -13,6 +13,7 @@ const profileData = JSON.parse(localStorage.getItem("profile"));
 const profileLogIn = document.getElementById("profile");
 const loginOptions = document.getElementById("loginOptions");
 const greetings = document.getElementById("greetings");
+const showCalculators = document.getElementById("showCalculators");
 const navMenu = document.getElementById("navMenu");
 const introduction = document.getElementById("introduction");
 const calcContainer = document.querySelector(".calculators");
@@ -228,6 +229,17 @@ removeProfile.addEventListener("click", function () {
   if (remove) {
     localStorage.removeItem("profile");
     location.reload();
+  }
+});
+showCalculators.addEventListener("click", function () {
+  fadeAnimation(navMenu);
+  calcContainer.classList.toggle("calculators-inactive");
+  if (calcContainer.classList.contains("calculators-inactive")) {
+    setTimeout(function () {
+      calcContainer.classList.add("d-none");
+    }, 500);
+  } else {
+    calcContainer.classList.remove("d-none");
   }
 });
 greetings.addEventListener("click", () => fadeAnimation(navMenu));
