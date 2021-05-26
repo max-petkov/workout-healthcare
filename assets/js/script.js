@@ -28,13 +28,25 @@ const fadeAnimation = function (element) {
   element.classList.toggle("fade-in-animation");
 };
 const renderErrorValid = function (el, msg) {
-  el.style.marginBottom = "0.5rem";
-  el.nextElementSibling.style.color = "red";
+  el.style.marginBottom = "0.4rem";
+  if (el.type === "text") {
+    el.style.border = "1px solid rgb(220, 53, 69)";
+    el.style.boxShadow = "1px 1px 4px rgba(220, 53, 69, 0.5)";
+  }
+  el.nextElementSibling.style.marginBottom = "0.5rem";
+  el.nextElementSibling.style.fontSize = "0.8rem";
+  el.nextElementSibling.style.color = "rgb(220, 53, 69)";
   el.nextElementSibling.textContent = msg;
 };
 const renderSuccessValid = function (el, msg) {
-  el.style.marginBottom = "0.5rem";
-  el.nextElementSibling.style.color = "green";
+  el.style.marginBottom = "0.4rem";
+  if (el.type === "text") {
+    el.style.border = "1px solid rgb(25, 135, 84)";
+    el.style.boxShadow = "1px 1px 4px rgba(25, 135, 84, 0.5)";
+  }
+  el.nextElementSibling.style.marginBottom = "0.5rem";
+  el.nextElementSibling.style.fontSize = "0.8rem";
+  el.nextElementSibling.style.color = "rgb(25, 135, 84)";
   el.nextElementSibling.textContent = msg;
 };
 const renderProfile = function (obj) {
