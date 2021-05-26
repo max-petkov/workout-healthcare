@@ -103,7 +103,7 @@ input[type="radio"] {
 }
 
 /* Position */
-.p-fix-bottom {
+.p-fix-bot {
   position: fixed;
   bottom: 0;
 }
