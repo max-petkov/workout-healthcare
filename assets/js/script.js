@@ -256,7 +256,7 @@ if (profileData) {
   profileLogIn.classList.add("d-flex");
 }
 
-if (profileData.exercises) {
+if (profileData?.exercises) {
   renderOneRepMax();
 }
 
