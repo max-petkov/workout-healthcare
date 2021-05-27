@@ -55,6 +55,17 @@ input[type="radio"] {
   width: 100%;
 }
 
+/* Tables */
+table,
+th,
+td {
+  padding: 1rem;
+  border: 1px solid var(--color-dark);
+  border-collapse: collapse;
+  opacity: 1;
+  transition: 0.3s;
+}
+
 /* Text */
 .text-center {
   text-align: center;
@@ -179,6 +190,10 @@ input[type="radio"] {
   padding-left: 2rem;
 }
 
+.p-1 {
+  padding: 0.5rem;
+}
+
 .p-2rem {
   padding: 2rem;
 }
@@ -198,6 +213,16 @@ input[type="radio"] {
 
 .h-inherit {
   height: inherit;
+}
+
+/* Text Style */
+.text-underline {
+  text-decoration: underline;
+}
+
+/* Overflow */
+.oveflow-hid {
+  overflow: hidden;
 }
 
 /* UI Elements */
@@ -301,7 +326,7 @@ input[type="radio"] {
   width: 98%;
   margin: 0 auto;
   height: auto;
-  max-height: 500px;
+  max-height: 800px;
   padding: 1rem;
   border: 1px solid var(--color-dark);
   border-top: transparent;
