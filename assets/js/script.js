@@ -412,10 +412,12 @@ formWorkoutRoutine.addEventListener("submit", function (e) {
     validateAge(age) &&
     validateWorkoutRoutine(checkedRadioBtn, radioBtnsContainer)
   ) {
-    this.nextElementSibling.textContent = `You need to consume atleast: ${profile.calcWorkoutRoutineCalories(
-      profile.calcBodyNeeds(+weight.value, +height.value, +age.value),
-      checkedRadioBtn.value
-    )} kcal`;
+    this.nextElementSibling.textContent = `You need to consume atleast: ${profile
+      .calcWorkoutRoutineCalories(
+        profile.calcBodyNeeds(+weight.value, +height.value, +age.value),
+        checkedRadioBtn.value
+      )
+      .toFixed(1)} kcal`;
   }
 });
 
