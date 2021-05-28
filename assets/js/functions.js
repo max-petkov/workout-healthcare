@@ -85,9 +85,9 @@ const render1RMWithoutSave = function (exercise, weight) {
         <span><b>${capitalizeWord(exercise.value)}</b>: ${profile
       .calcOneRepMax(+weight.value)
       .toFixed(1)} kg</span>
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="ml-1 check-statistics toggle-slide mr-1 bi bi-chevron-down" viewBox="0 0 16 16">
-          <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
-        </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="ml-1 check-statistics toggle-slide mr-1 bi bi-chevron-down" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+      </svg>
       </li>`
   );
 };
@@ -120,6 +120,10 @@ const renderCalcNoSaveResults = function (ulId, titleText, result) {
 };
 
 const renderGuestProfile = function () {
+  const title = document.createElement("h2");
+  title.classList.add("mb-1rem");
+  title.textContent = "Make calculations and all results will be printed";
+  containerPersonalInfo.prepend(title);
   loginOptions.classList.add("d-none");
   greetings.classList.remove("d-none");
   profileName.textContent = "Guest";
@@ -128,7 +132,6 @@ const renderGuestProfile = function () {
     "Create profile:";
   profileLogIn.classList.remove("d-none");
   profileLogIn.classList.add("d-flex");
-  mealsContainer.classList.add("d-none");
   calcContainer.classList.remove("d-none-md");
   profileInfo.remove();
 };
@@ -202,5 +205,10 @@ const validateWorkoutRoutine = function (workoutRoutine, radioBtnsContainer) {
   }
 };
 
-// const el = document.getElementById("mealsContainer");
-// console.log(window.getComputedStyle(el).getPropertyValue("opacity"));
+// Tippy
+tippy.delegate("#oneRepMaxInfo", {
+  target: "svg",
+  content: "Check statistics",
+  arrow: false,
+  placement: "right",
+});

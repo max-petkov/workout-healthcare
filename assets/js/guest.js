@@ -3,10 +3,6 @@ const logInGuest = document.getElementById("logInGuest");
 
 // Login as Guest
 logInGuest.addEventListener("click", function () {
-  const title = document.createElement("h2");
-  title.textContent = "Make calculations and all results will be printed";
-  title.classList.add("mb-1rem");
-  containerPersonalInfo.prepend(title);
   loginOptions.style.transition = "0.5s";
   loginOptions.style.opacity = 0;
 
