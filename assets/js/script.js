@@ -462,7 +462,7 @@ oneRepMaxInfo.addEventListener("click", function (e) {
       );
     }
   } else {
-    showStatistics?.nextElementSibling.style.opacity = 0;
+    showStatistics.nextElementSibling.style.opacity = 0;
     setTimeout(function () {
       showStatistics.nextElementSibling.remove();
     }, 300);
