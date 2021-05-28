@@ -14,6 +14,8 @@ const profileLogIn = document.getElementById("profile");
 const loginOptions = document.getElementById("loginOptions");
 const greetings = document.getElementById("greetings");
 const showCalculators = document.getElementById("showCalculators");
+const generateMeals = document.getElementById("generateMeals");
+const mealsContainer = document.getElementById("mealsContainer");
 const navMenu = document.getElementById("navMenu");
 const introduction = document.getElementById("introduction");
 const calcContainer = document.querySelector(".calculators");
@@ -24,140 +26,6 @@ const formBMR = document.getElementById("bmr");
 const formWorkoutRoutine = document.getElementById("formWorkoutRoutine");
 const containerPersonalInfo = document.getElementById("personalInfoContainer");
 const containerMeals = document.getElementById("mealsContainer");
-
-// Functions
-const capitalizeWord = (word) =>
-  word.split("")[0].toUpperCase() + word.slice(1).toLowerCase();
-const fadeAnimation = function (element) {
-  element.classList.toggle("fade-in-animation");
-};
-const renderErrorValid = function (el, msg) {
-  el.style.marginBottom = "0.4rem";
-  if (el.type === "text") {
-    el.style.border = "1px solid rgb(220, 53, 69)";
-    el.style.boxShadow = "1px 1px 4px rgba(220, 53, 69, 0.5)";
-  }
-  el.nextElementSibling.style.marginBottom = "0.5rem";
-  el.nextElementSibling.style.fontSize = "0.8rem";
-  el.nextElementSibling.style.color = "rgb(220, 53, 69)";
-  el.nextElementSibling.textContent = msg;
-};
-const renderSuccessValid = function (el, msg) {
-  el.style.marginBottom = "0.4rem";
-  if (el.type === "text") {
-    el.style.border = "1px solid rgb(25, 135, 84)";
-    el.style.boxShadow = "1px 1px 4px rgba(25, 135, 84, 0.5)";
-  }
-  el.nextElementSibling.style.marginBottom = "0.5rem";
-  el.nextElementSibling.style.fontSize = "0.8rem";
-  el.nextElementSibling.style.color = "rgb(25, 135, 84)";
-  el.nextElementSibling.textContent = msg;
-};
-const renderProfile = function (obj) {
-  const html = `
-  <h3 class="mb-1 text-underline">Personal information:</h3>
-  <li class="mb-1"><b>Name:</b> ${obj?.name}</li>
-  <li class="mb-1"><b>Age:</b> ${obj?.age}</li>
-  <li class="mb-1"><b>Weight:</b> ${obj?.weight} kg</li>
-  <li class="mb-1"><b>Height:</b> ${obj?.height} cm</li>
-  <li class="mb-1"><b>BMI:</b> ${obj?.BMI} (${profile.renderBMI(obj?.BMI)})</li>
-  <li class="mb-1"><b>BMR:</b> ${obj?.BMR.toFixed(1)} kcal</li>
-  <li class="mb-1"><b>Workout routine:</b> ${obj?.workout}</li>
-  <li class="mb-1"><b>Workout Calories:</b> ${obj?.workoutCalories.toFixed(
-    1
-  )} kcal</li>
-  `;
-  profileInfo.innerHTML = html;
-  profileName.innerHTML = obj?.name;
-};
-
-const renderOneRepMax = function () {
-  const title = document.createElement("h3");
-  title.classList.add("mb-1", "text-underline");
-  title.textContent = "One Rep Max";
-  oneRepMaxInfo.appendChild(title);
-
-  profileData.exercises.forEach(function (val) {
-    oneRepMaxInfo.insertAdjacentHTML(
-      "beforeend",
-      `<li class="mb-1">
-        <span><b>${val.exercise}</b>: ${val.result} kg</span>
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="ml-1 check-statistics toggle-slide mr-1 bi bi-chevron-down" viewBox="0 0 16 16">
-          <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
-        </svg>
-      </li>`
-    );
-  });
-};
-
-const validateAge = function (age) {
-  if (!age.value) {
-    renderErrorValid(age, "Field can not be empty!");
-    return false;
-  } else {
-    if (Number.isInteger(+age.value)) {
-      renderSuccessValid(age, "OK!");
-      return true;
-    } else {
-      renderErrorValid(age, "Field must contain integers!");
-      return false;
-    }
-  }
-};
-const validateWeight = function (weight) {
-  if (!weight.value) {
-    renderErrorValid(weight, "Field can not be empty!");
-    return false;
-  } else {
-    if (!weight.value.match(/^\d*\.?\d*$/g)) {
-      renderErrorValid(weight, "Field must contain numbers!");
-      return false;
-    } else {
-      renderSuccessValid(weight, "OK!");
-      return true;
-    }
-  }
-};
-
-const validateHeight = function (height) {
-  if (!height.value) {
-    renderErrorValid(height, "Field can not be empty!");
-    return false;
-  } else {
-    if (Number.isInteger(+height.value)) {
-      renderSuccessValid(height, "OK!");
-      return true;
-    } else {
-      renderErrorValid(height, "Value must be in centimeters!");
-      return false;
-    }
-  }
-};
-
-const validateName = function (name) {
-  if (!name.value) {
-    renderErrorValid(name, "Field can not be empty!");
-    return false;
-  } else {
-    if (name.value.length >= 50) {
-      renderErrorValid(name, "Name must be lower than 50 symbols!");
-      return false;
-    } else {
-      renderSuccessValid(name, "OK!");
-      return true;
-    }
-  }
-};
-
-const validateWorkoutRoutine = function (workoutRoutine, radioBtnsContainer) {
-  if (!workoutRoutine) {
-    renderErrorValid(radioBtnsContainer, "You need to select one option!");
-    return false;
-  } else {
-    renderSuccessValid(radioBtnsContainer, "OK!");
-    return true;
-  }
-};
 
 // Profile Object
 const profile = {
@@ -238,10 +106,15 @@ createProfile.addEventListener("submit", function (e) {
       data.routine
     );
 
-    // Insert profile obj data into local storage
-    const personalInfoJSON = JSON.stringify(profile.personalInfo);
-    localStorage.setItem("profile", personalInfoJSON);
-
+    if (!profileData) {
+      // Create profile
+      const personalInfoJSON = JSON.stringify(profile.personalInfo);
+      localStorage.setItem("profile", personalInfoJSON);
+    } else {
+      // Update profile
+      const updateObj = Object.assign(profileData, profile.personalInfo);
+      localStorage.setItem("profile", JSON.stringify(updateObj));
+    }
     location.reload();
   }
 });
@@ -249,6 +122,18 @@ createProfile.addEventListener("submit", function (e) {
 // Render localStorage data
 if (profileData) {
   renderProfile(profileData);
+
+  createProfile.querySelector('input[name="name"]').value = profileData.name;
+  createProfile.querySelector('input[name="age"]').value = profileData.age;
+  createProfile.querySelector('input[name="weight"]').value =
+    profileData.weight;
+  createProfile.querySelector('input[name="height"]').value =
+    profileData.height;
+
+  createProfile.querySelector(
+    `[name="routine"][value="${profileData.routine}"]`
+  ).checked = true;
+
   loginOptions.classList.add("d-none");
   greetings.classList.remove("d-none");
   greetings.classList.add("d-flex");
@@ -277,14 +162,11 @@ removeProfile.addEventListener("click", function () {
 });
 showCalculators.addEventListener("click", function () {
   fadeAnimation(navMenu);
-  calcContainer.classList.toggle("calculators-inactive");
-  if (calcContainer.classList.contains("calculators-inactive")) {
-    setTimeout(function () {
-      calcContainer.classList.add("d-none");
-    }, 500);
-  } else {
-    calcContainer.classList.remove("d-none");
-  }
+  inActiveElAnimation(calcContainer);
+});
+generateMeals.addEventListener("click", function () {
+  fadeAnimation(navMenu);
+  inActiveElAnimation(mealsContainer);
 });
 greetings.addEventListener("click", () => fadeAnimation(navMenu));
 
@@ -299,7 +181,7 @@ calcContainer.addEventListener("click", function (e) {
     .classList.toggle("rotate-chevron");
 });
 
-// 1 Rep Max Calculator
+// One Rep Max Calculator
 formOneRepMax.addEventListener("submit", function (e) {
   e.preventDefault();
 
@@ -314,6 +196,16 @@ formOneRepMax.addEventListener("submit", function (e) {
     this.nextElementSibling.firstElementChild.textContent = `Result: ${profile
       .calcOneRepMax(+weight.value)
       .toFixed(1)} kg`;
+
+    if (oneRepMaxInfo.children.length > 0) {
+      render1RMWithoutSave(exercise, weight);
+    } else {
+      const title = document.createElement("h3");
+      title.classList.add("mb-1", "text-underline");
+      title.textContent = "One Rep Max";
+      oneRepMaxInfo.appendChild(title);
+      render1RMWithoutSave(exercise, weight);
+    }
   }
   // Save into localstorage
   if (profileData && validateWeight(weight) && validateName(exercise)) {
@@ -371,6 +263,12 @@ formBMI.addEventListener("submit", function (e) {
       +weight.value,
       +height.value
     )} (${profile.renderBMI(profile.calcBMI(+weight.value, +height.value))})`;
+
+    renderCalcNoSaveResults(
+      "bmiNoSave",
+      "BMI",
+      this.nextElementSibling.textContent
+    );
   }
 });
 
@@ -388,6 +286,12 @@ formBMR.addEventListener("submit", function (e) {
     this.nextElementSibling.textContent = `Result: ${profile
       .calcBodyNeeds(+weight.value, +height.value, +age.value)
       .toFixed(1)} kcal`;
+
+    renderCalcNoSaveResults(
+      "bmrNoSave",
+      "BMR",
+      formBMR.nextElementSibling.textContent
+    );
   }
 });
 
@@ -418,6 +322,12 @@ formWorkoutRoutine.addEventListener("submit", function (e) {
         checkedRadioBtn.value
       )
       .toFixed(1)} kcal`;
+
+    renderCalcNoSaveResults(
+      "workoutRoutineNoSave",
+      "Workout Routine",
+      formWorkoutRoutine.nextElementSibling.textContent
+    );
   }
 });
 
@@ -427,24 +337,23 @@ oneRepMaxInfo.addEventListener("click", function (e) {
   showStatistics?.classList.toggle("rotate-chevron");
 
   if (showStatistics?.classList.contains("rotate-chevron")) {
-    let exerciseValue =
+    const exerciseValue =
       +showStatistics.previousElementSibling.textContent.split(" ")[1];
-    let percent = 1;
-    let result = [exerciseValue];
-
     const table = document.createElement("table");
     table.classList.add("mt-1rem", "mb-1rem");
     showStatistics.closest("li").appendChild(table);
     table.innerHTML = `<thead>
-    <tr">
+      <tr">
       <th class="p-1">№</th>
       <th class="p-1">Perceteges %</th>
       <th>Weight(kg)</th>
-    </tr>
-  </thead>
-  <tbody></tbody>
-  `;
+      </tr>
+      </thead>
+      <tbody></tbody>
+      `;
 
+    let percent = 1;
+    let result = [exerciseValue];
     // Getting values from 95% to 50% based on One Rep Max and render results
     for (let i = 0; i < 10; i++) {
       percent = percent - 0.05;
@@ -462,9 +371,11 @@ oneRepMaxInfo.addEventListener("click", function (e) {
       );
     }
   } else {
-    showStatistics.nextElementSibling.style.opacity = 0;
-    setTimeout(function () {
-      showStatistics.nextElementSibling.remove();
-    }, 300);
+    if (showStatistics) {
+      showStatistics.nextElementSibling.style.opacity = 0;
+      setTimeout(function () {
+        showStatistics.nextElementSibling.remove();
+      }, 300);
+    }
   }
 });

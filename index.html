@@ -17,19 +17,28 @@
         <h3>Workout & Health Care</h3>
       </div>
       <div id="greetings" class="align-center d-none">
-        <a href="#">Hello, <span id="profileName">-</span></a>
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-          class="ml-1 bi bi-chevron-down" viewBox="0 0 16 16">
-          <path fill-rule="evenodd"
-            d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
-        </svg>
+        <div class="d-none-lg">
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-list"
+            viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+              d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
+          </svg>
+        </div>
+        <div class="d-none-md d-flex align-center">
+          <a href="#">Hello, <span id="profileName">-</span></a>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+            class="ml-1 bi bi-chevron-down" viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+              d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+          </svg>
+        </div>
       </div>
     </div>
     <!--Nav menu -->
     <ul id="navMenu" class="nav-menu">
       <li id="editProfile" class="mb-1rem">📃 <a href="#" class="text-dark">Edit Profile</a></li>
       <li id="showCalculators" class="mb-1rem">📲 <a href="#" class="text-dark">Calculators</a></li>
-      <li class="mb-1rem">🍖 <a href="#" class="text-dark">Meals</a></li>
+      <li id="generateMeals" class="mb-1rem">🍖 <a href="#" class="text-dark">Generate meals</a></li>
       <li id="removeProfile">❌ <a href="#" class="text-dark">Remove Profile</a></li>
     </ul>
   </nav>
@@ -70,8 +79,8 @@
         </div>
       </div>
     </section>
-    <div id="profile" class="container d-none">
-      <section class="calculators flex-1 pr-2rem pt-2rem pb-2rem">
+    <div id="profile" class="container d-none d-flex-col-md">
+      <section class="calculators flex-1 pr-2rem pt-2rem pb-2rem d-none-md">
         <h2 class="text-center mb-1rem">Calculators</h2>
         <!-- Calculate 1Rep Max -->
         <div class="mb-1rem">
@@ -219,9 +228,9 @@
           <ul id="profileInfo" class="personal-info mb-1rem"></ul>
           <ul id="oneRepMaxInfo" class="personal-info mb-1rem"></ul>
         </div>
-        <div id="mealsContainer" class="flex-1 d-flex-col align-center">
+        <div id="mealsContainer" class="meal-container flex-1 order-first-md d-none-md mb-1_5-rem-md">
           <h3 class="text-center mb-1">Generate meals:</h3>
-          <div class="m-auto">
+          <div class="text-center">
             <button class="btn mr-1rem">Bulk meals</button>
             <button class="btn">Cut meals</button>
           </div>
@@ -279,7 +288,9 @@
     <hr class="hr-length">
     <a href="mailto:maxy.dp@abv.bg" class="text-center mt-1">maxy.dp@abv.bg</a>
   </footer>
-  <script src="assets/js/script.js"></script>
+  <script src="assets/js/functions.js"></script>
+  <script src="assets/js/profile.js"></script>
+  <script src="assets/js/guest.js"></script>
 </body>
 
 </html>

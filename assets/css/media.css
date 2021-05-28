@@ -6,11 +6,6 @@
     padding: 0 1rem;
   }
 
-  nav .container {
-    display: flex;
-    justify-content: center;
-  }
-
   h2 {
     font-size: 1.2rem;
   }
@@ -56,6 +51,32 @@
     font-size: 0.9rem;
   }
 
+  .container {
+    padding: 0 2rem;
+  }
+
+  .brand h3 {
+    font-size: 1rem;
+  }
+
+  /* Display */
+  .d-none-md {
+    display: none;
+  }
+
+  .d-flex-col-md {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .order-first-md {
+    order: -1;
+  }
+
+  /* Maring & Padding */
+  .mb-1_5-rem-md {
+    margin-bottom: 1.5rem;
+  }
   /* Sizing */
   .w-100-md {
     width: 100%;
@@ -69,12 +90,28 @@
   .option-card {
     margin-right: 0;
   }
+
+  .calculators {
+    border-right: none;
+    border-bottom: 2px solid var(--color-dark);
+    padding-right: 0;
+  }
+
+  .info {
+    padding-left: 0;
+    flex-direction: column;
+  }
 }
 
 @media (min-width: 769px) {
+  /* Display */
+  .d-none-lg {
+    display: none;
+  }
+
   /* UI Elements */
   .option-card {
-    width: 320px;
+    width: 400px;
     max-width: auto;
     min-width: auto;
     padding: 2rem;
