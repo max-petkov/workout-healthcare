@@ -146,13 +146,28 @@ if (profileData?.exercises) {
 }
 
 // Navigation menu
-showCreateProfile.addEventListener("click", () => fadeAnimation(formProfile));
-hideCreateProfile.addEventListener("click", () => fadeAnimation(formProfile));
+showCreateProfile.addEventListener("click", function () {
+  formProfile.parentElement.classList.toggle("d-none");
+  setTimeout(function () {
+    fadeAnimation(formProfile);
+  }, 300);
+});
+
+hideCreateProfile.addEventListener("click", function () {
+  fadeAnimation(formProfile);
+  setTimeout(function () {
+    formProfile.parentElement.classList.add("d-none");
+  }, 300);
+});
+
 editProfile.addEventListener("click", function () {
   formProfile.firstElementChild.firstElementChild.textContent = "Edit profile:";
+  formProfile.parentElement.classList.remove("d-none");
+  navMenu.parentElement.classList.add("d-none");
   fadeAnimation(formProfile);
   fadeAnimation(navMenu);
 });
+
 removeProfile.addEventListener("click", function () {
   const remove = confirm("Are you sure you want to remove profile?");
   if (remove) {
@@ -160,15 +175,23 @@ removeProfile.addEventListener("click", function () {
     location.reload();
   }
 });
+
 showCalculators.addEventListener("click", function () {
   fadeAnimation(navMenu);
   inActiveElAnimation(calcContainer);
 });
+
 generateMeals.addEventListener("click", function () {
   fadeAnimation(navMenu);
   inActiveElAnimation(mealsContainer);
 });
-greetings.addEventListener("click", () => fadeAnimation(navMenu));
+
+greetings.addEventListener("click", function () {
+  navMenu.parentElement.classList.toggle("d-none");
+  setTimeout(function () {
+    fadeAnimation(navMenu);
+  });
+});
 
 // Accordation
 calcContainer.addEventListener("click", function (e) {
