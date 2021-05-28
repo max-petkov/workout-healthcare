@@ -1,0 +1,83 @@
+/* Smartphone screen */
+
+@media (max-width: 425px) {
+  /* General */
+  .container {
+    padding: 0 1rem;
+  }
+
+  nav .container {
+    display: flex;
+    justify-content: center;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+  }
+
+  hr {
+    width: 100%;
+  }
+
+  /* Sizing */
+  .w-100-sm {
+    width: 100%;
+  }
+
+  /* Margin padding */
+  .mr-0-sm {
+    margin-right: 0;
+  }
+
+  .p-1rem-sm {
+    padding: 1rem;
+  }
+
+  /* UI Elements */
+  .option-card {
+    width: 100%;
+    max-width: auto;
+    min-width: auto;
+    padding: 1rem;
+  }
+  .form-personal-data {
+    padding: 1rem;
+  }
+
+  .fade-in-animation {
+    right: 0;
+  }
+}
+
+/* Tablet screen */
+@media (max-width: 768px) {
+  /* General */
+  li {
+    font-size: 0.9rem;
+  }
+
+  /* Sizing */
+  .w-100-md {
+    width: 100%;
+  }
+
+  /* UI Elements */
+  .option-card + .option-card {
+    margin-top: 0.8rem;
+  }
+
+  .option-card {
+    margin-right: 0;
+  }
+}
+
+@media (min-width: 769px) {
+  /* UI Elements */
+  .option-card {
+    width: 320px;
+    max-width: auto;
+    min-width: auto;
+    padding: 2rem;
+    margin-right: 1rem;
+  }
+}
