@@ -18,6 +18,10 @@ body {
   overflow-x: hidden;
 }
 
+ul {
+  list-style: none;
+}
+
 nav,
 footer {
   padding: 1.2rem 0;
