@@ -177,11 +177,13 @@ removeProfile.addEventListener("click", function () {
 });
 
 showCalculators.addEventListener("click", function () {
+  navMenu.parentElement.classList.toggle("d-none");
   fadeAnimation(navMenu);
   inActiveElAnimation(calcContainer);
 });
 
 generateMeals.addEventListener("click", function () {
+  navMenu.parentElement.classList.toggle("d-none");
   fadeAnimation(navMenu);
   inActiveElAnimation(mealsContainer);
 });
