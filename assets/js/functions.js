@@ -209,6 +209,25 @@ const validateWorkoutRoutine = function (workoutRoutine, radioBtnsContainer) {
 tippy.delegate("#oneRepMaxInfo", {
   target: "svg",
   content: "Check statistics",
-  arrow: false,
   placement: "right",
+});
+
+tippy("#infoRM", {
+  content:
+    "Find the heaviest weight you can lift 4-6 times and calculate it. For example you can lift 5 times 60 kg put 60 into weight field and calc it.",
+});
+
+tippy("#infoBMI", {
+  content:
+    "BMI (Body Mass Index) is a measure of body fat based on height and weight that applies to adult men and women.  Enter weight(kg) and height(cm) into the calculator.",
+});
+
+tippy("#infoBMR", {
+  content:
+    "BMR (Basal Metabolic Rate) is the number of calories required to keep your body functioning at rest. Enter weight(kg), height(cm) and age into the calculator.",
+});
+
+tippy("#infoWokoutRoutine", {
+  content:
+    "The Harris Benedict Equation is a formula that uses your BMR and then applies an activity factor to determine your total daily energy expenditure (calories).",
 });
