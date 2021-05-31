@@ -109,6 +109,7 @@ const renderCalcNoSaveResults = function (ulId, titleText, result) {
           ${result}
         </li>`
     );
+    document.getElementById("resultLists").classList.remove("d-none");
   } else {
     document.getElementById(ulId).insertAdjacentHTML(
       "beforeend",
@@ -120,10 +121,12 @@ const renderCalcNoSaveResults = function (ulId, titleText, result) {
 };
 
 const renderGuestProfile = function () {
+  document.getElementById("resultLists").classList.remove("d-none");
   const title = document.createElement("h2");
   title.classList.add("mb-1rem");
+  title.setAttribute("id", "guestResults");
   title.textContent = "Make calculations and all results will be printed";
-  containerPersonalInfo.prepend(title);
+  document.getElementById("resultLists").prepend(title);
   loginOptions.classList.add("d-none");
   greetings.classList.remove("d-none");
   profileName.textContent = "Guest";
@@ -131,7 +134,7 @@ const renderGuestProfile = function () {
   formProfile.firstElementChild.firstElementChild.textContent =
     "Create profile:";
   profileLogIn.classList.remove("d-none");
-  profileLogIn.classList.add("d-flex");
+  // profileLogIn.classList.add("d-flex");
   calcContainer.classList.remove("d-none-md");
   profileInfo.remove();
 };

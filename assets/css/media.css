@@ -73,17 +73,34 @@
     order: -1;
   }
 
-  /* Maring & Padding */
-  .mb-1_5-rem-md {
-    margin-bottom: 1.5rem;
-  }
   /* Sizing */
   .w-100-md {
     width: 100%;
   }
 
+  /* Maring & Padding */
+  .mb-1_5-rem-md {
+    margin-bottom: 1.5rem;
+  }
+
+  .m-0-md {
+    margin: 0;
+  }
+
   .mr-1rem-md {
     margin-right: 1rem;
+  }
+
+  .mt-1rem-md {
+    margin-top: 1rem;
+  }
+
+  .mb-1rem-md {
+    margin-bottom: 1rem;
+  }
+
+  .pb-1rem-md {
+    padding-bottom: 1rem;
   }
 
   /* UI Elements */

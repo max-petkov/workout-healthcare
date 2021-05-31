@@ -6,9 +6,6 @@ logInGuest.addEventListener("click", function () {
   loginOptions.style.transition = "0.5s";
   loginOptions.style.opacity = 0;
 
-  if (window.innerWidth <= 768)
-    document.querySelector(".info").style.order = -1;
-
   setTimeout(function () {
     renderGuestProfile();
   }, 500);

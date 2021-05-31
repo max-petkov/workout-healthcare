@@ -77,170 +77,170 @@
         </div>
       </div>
     </section>
-    <div id="profile" class="container d-none d-flex-col-md">
-      <section class="calculators flex-1 pr-2rem pt-2rem pb-2rem d-none-md">
-        <h2 class="text-center mb-1rem">Calculators</h2>
-        <!-- Calculate 1RM -->
-        <div class="mb-1rem">
-          <div class="calculator-tab d-flex align-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-              class="toggle-slide mr-1 bi bi-chevron-down" viewBox="0 0 16 16">
-              <path fill-rule="evenodd"
-                d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
-            </svg>
-            <p>1 Rep Max</p>
-            <svg id="infoRM" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-              class="ml-1 bi bi-info-circle" viewBox="0 0 16 16">
-              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-              <path
-                d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
-            </svg>
-          </div>
-          <div class="calc-content">
-            <form id="oneRepMax" class="d-flex-col" action="#" method="POST">
-              <input type="text" class="mb-1rem" name="exerciseName" placeholder="Enter exercise name...">
-              <div></div>
-              <input type="text" class="mb-1rem" name="maxWeight" placeholder="Enter weight(kg)...">
-              <div></div>
-              <input type="submit" class="btn" value="Calculate">
-            </form>
-            <div class="mt-1rem d-flex align-center">
-              <span></span>
-              <button class="save-result btn ml-1 d-none">Save to profile</button>
+    <div id="profile" class="container d-none d-flex-col-md mt-3rem mt-1rem-md">
+      <div id="nutritionContainer" class="d-none-md mb-3rem mb-1rem-md">
+        <div class="d-flex align-center mb-1 justify-center">
+          <h3 class="text-center">Nutrition search:</h3>
+          <svg id="infoNutrition" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor"
+            class="ml-1 bi bi-info-circle" viewBox="0 0 16 16">
+            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+            <path
+              d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+          </svg>
+        </div>
+        <form id="nutritionSearch" action="#" class="d-flex p-rel w-600px m-auto w-100-md" method="POST">
+          <input type="text" name="nutrition" class="w-100 mr-1">
+          <div class="p-abs nutrition-validation-text"></div>
+          <input id="searchIngredient" type="submit" class="btn" value="Search">
+        </form>
+        <div id="foodResults" class="overflow-x-auto"></div>
+      </div>
+      <section class="d-flex d-flex-col-md">
+        <section class="calculators d-none-md mr-3rem mb-1rem pb-1rem-md m-0-md mt-1rem-md">
+          <h3 class="text-center mb-1rem text-underline">Calculators</h3>
+          <!-- Calculate 1RM -->
+          <div class="mb-1rem">
+            <div class="calculator-tab d-flex align-center">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="toggle-slide mr-1 bi bi-chevron-down" viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                  d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+              </svg>
+              <p>1 Rep Max</p>
+              <svg id="infoRM" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="ml-1 bi bi-info-circle" viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                <path
+                  d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+              </svg>
+            </div>
+            <div class="calc-content">
+              <form id="oneRepMax" class="d-flex-col" action="#" method="POST">
+                <input type="text" class="mb-1rem" name="exerciseName" placeholder="Enter exercise name...">
+                <div></div>
+                <input type="text" class="mb-1rem" name="maxWeight" placeholder="Enter weight(kg)...">
+                <div></div>
+                <input type="submit" class="btn" value="Calculate">
+              </form>
+              <div class="mt-1rem d-flex align-center">
+                <span></span>
+                <button class="save-result btn ml-1 d-none">Save to profile</button>
+              </div>
             </div>
           </div>
-        </div>
-        <!-- Calculate BMI -->
-        <div class="mb-1rem">
-          <div class="calculator-tab d-flex align-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-              class="toggle-slide mr-1 bi bi-chevron-down" viewBox="0 0 16 16">
-              <path fill-rule="evenodd"
-                d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
-            </svg>
-            <p>BMI</p>
-            <svg id="infoBMI" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-              class="ml-1 bi bi-info-circle" viewBox="0 0 16 16">
-              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-              <path
-                d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
-            </svg>
+          <!-- Calculate BMI -->
+          <div class="mb-1rem">
+            <div class="calculator-tab d-flex align-center">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="toggle-slide mr-1 bi bi-chevron-down" viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                  d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+              </svg>
+              <p>BMI</p>
+              <svg id="infoBMI" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="ml-1 bi bi-info-circle" viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                <path
+                  d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+              </svg>
+            </div>
+            <div class="calc-content">
+              <form id="bmi" class="d-flex-col" action="#" method="POST">
+                <input type="text" class="mb-1rem" name="weightBMICustom" placeholder="Enter weight...">
+                <div></div>
+                <input type="text" class="mb-1rem" name="heightBMICustom" placeholder="Enter height...">
+                <div></div>
+                <input type="submit" class="btn" value="Calculate">
+              </form>
+              <div class="mt-1rem"></div>
+            </div>
           </div>
-          <div class="calc-content">
-            <form id="bmi" class="d-flex-col" action="#" method="POST">
-              <input type="text" class="mb-1rem" name="weightBMICustom" placeholder="Enter weight...">
-              <div></div>
-              <input type="text" class="mb-1rem" name="heightBMICustom" placeholder="Enter height...">
-              <div></div>
-              <input type="submit" class="btn" value="Calculate">
-            </form>
-            <div class="mt-1rem"></div>
+          <!-- Calculate BMR -->
+          <div class="mb-1rem">
+            <div class="calculator-tab d-flex align-center">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="toggle-slide mr-1 bi bi-chevron-down" viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                  d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+              </svg>
+              <p>BMR</p>
+              <svg id="infoBMR" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="ml-1 bi bi-info-circle" viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                <path
+                  d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+              </svg>
+            </div>
+            <div class="calc-content">
+              <form id="bmr" class="d-flex-col" action="#" method="POST">
+                <input type="text" class="mb-1rem" name="weightBMRCustom" placeholder="Enter weight...">
+                <div></div>
+                <input type="text" class="mb-1rem" name="heightBMRCustom" placeholder="Enter height...">
+                <div></div>
+                <input type="text" class="mb-1rem" name="ageBMRCustom" placeholder="Enter age...">
+                <div></div>
+                <input type="submit" class="btn" value="Calculate">
+              </form>
+              <div class="mt-1rem"></div>
+            </div>
           </div>
-        </div>
-        <!-- Calculate BMR -->
-        <div class="mb-1rem">
-          <div class="calculator-tab d-flex align-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-              class="toggle-slide mr-1 bi bi-chevron-down" viewBox="0 0 16 16">
-              <path fill-rule="evenodd"
-                d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
-            </svg>
-            <p>BMR</p>
-            <svg id="infoBMR" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-              class="ml-1 bi bi-info-circle" viewBox="0 0 16 16">
-              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-              <path
-                d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
-            </svg>
-          </div>
-          <div class="calc-content">
-            <form id="bmr" class="d-flex-col" action="#" method="POST">
-              <input type="text" class="mb-1rem" name="weightBMRCustom" placeholder="Enter weight...">
-              <div></div>
-              <input type="text" class="mb-1rem" name="heightBMRCustom" placeholder="Enter height...">
-              <div></div>
-              <input type="text" class="mb-1rem" name="ageBMRCustom" placeholder="Enter age...">
-              <div></div>
-              <input type="submit" class="btn" value="Calculate">
-            </form>
-            <div class="mt-1rem"></div>
-          </div>
-        </div>
-        <!-- Calculate Workout Calories -->
-        <div>
-          <div class="calculator-tab d-flex align-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-              class="toggle-slide mr-1 bi bi-chevron-down" viewBox="0 0 16 16">
-              <path fill-rule="evenodd"
-                d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
-            </svg>
-            <p>Workout Calories</p>
-            <svg id="infoWokoutRoutine" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-              class="ml-1 bi bi-info-circle" viewBox="0 0 16 16">
-              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-              <path
-                d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
-            </svg>
-          </div>
-          <div class="calc-content">
-            <form id="formWorkoutRoutine" class="d-flex-col" action="#" method="POST">
-              <input type="text" class="mb-1rem" name="workoutCustomWeight" placeholder="Enter weight...">
-              <div></div>
-              <input type="text" class="mb-1rem" name="workoutCustomHeight" placeholder="Enter height...">
-              <div></div>
-              <input type="text" class="mb-1rem" name="workoutCustomAge" placeholder="Enter age...">
-              <div></div>
-              <div id="routineWorkoutCustom">
-                <label for="workOutRoutine"><b>Workout Routine</b></label>
-                <div class="mt-1">
-                  <input type="radio" name="workoutRoutineDescription" value="1" />
-                  <label for="#">Sedentary (little or no exercise)</label>
+          <!-- Calculate Workout Calories -->
+          <div>
+            <div class="calculator-tab d-flex align-center">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="toggle-slide mr-1 bi bi-chevron-down" viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                  d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+              </svg>
+              <p>Workout Calories</p>
+              <svg id="infoWokoutRoutine" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="ml-1 bi bi-info-circle" viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                <path
+                  d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+              </svg>
+            </div>
+            <div class="calc-content">
+              <form id="formWorkoutRoutine" class="d-flex-col" action="#" method="POST">
+                <input type="text" class="mb-1rem" name="workoutCustomWeight" placeholder="Enter weight...">
+                <div></div>
+                <input type="text" class="mb-1rem" name="workoutCustomHeight" placeholder="Enter height...">
+                <div></div>
+                <input type="text" class="mb-1rem" name="workoutCustomAge" placeholder="Enter age...">
+                <div></div>
+                <div id="routineWorkoutCustom">
+                  <label for="workOutRoutine"><b>Workout Routine</b></label>
+                  <div class="mt-1">
+                    <input type="radio" name="workoutRoutineDescription" value="1" />
+                    <label for="#">Sedentary (little or no exercise)</label>
+                  </div>
+                  <div>
+                    <input type="radio" name="workoutRoutineDescription" value="2" />
+                    <label for="#">Lightly active (light exercise/sports 1-3 days/week)</label>
+                  </div>
+                  <div>
+                    <input type="radio" name="workoutRoutineDescription" value="3" />
+                    <label for="#">Moderately active (moderate exercise/sports 3-5 days/week)</label>
+                  </div>
+                  <div>
+                    <input type="radio" name="workoutRoutineDescription" value="4" />
+                    <label for="#">Very active (hard exercise/sports 6-7 days a week)</label>
+                  </div>
+                  <div class="mb-1rem">
+                    <input type="radio" name="workoutRoutineDescription" value="5" />
+                    <label for="#">If you are extra active (very hard exercise/sports & a physical job)</label>
+                  </div>
                 </div>
-                <div>
-                  <input type="radio" name="workoutRoutineDescription" value="2" />
-                  <label for="#">Lightly active (light exercise/sports 1-3 days/week)</label>
-                </div>
-                <div>
-                  <input type="radio" name="workoutRoutineDescription" value="3" />
-                  <label for="#">Moderately active (moderate exercise/sports 3-5 days/week)</label>
-                </div>
-                <div>
-                  <input type="radio" name="workoutRoutineDescription" value="4" />
-                  <label for="#">Very active (hard exercise/sports 6-7 days a week)</label>
-                </div>
-                <div class="mb-1rem">
-                  <input type="radio" name="workoutRoutineDescription" value="5" />
-                  <label for="#">If you are extra active (very hard exercise/sports & a physical job)</label>
-                </div>
-              </div>
+                <div></div>
+                <input type="submit" class="btn mb-1" value="Calculate">
+              </form>
               <div></div>
-              <input type="submit" class="btn mb-1" value="Calculate">
-            </form>
-            <div></div>
+            </div>
           </div>
-        </div>
-      </section>
-      <section class="info flex-2 pt-2rem pb-2rem pl-2rem">
-        <div id="nutritionContainer" class="d-none-md mb-1_5-rem">
-          <div class="d-flex align-center mb-1 justify-center">
-            <h3 class="text-center">Nutrition search:</h3>
-            <svg id="infoNutrition" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor"
-              class="ml-1 bi bi-info-circle" viewBox="0 0 16 16">
-              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-              <path
-                d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
-            </svg>
-          </div>
-          <form id="nutritionSearch" action="#" class="d-flex p-rel" method="POST">
-            <input type="text" name="nutrition" class="w-100 mr-1">
-            <div class="p-abs nutrition-validation-text"></div>
-            <input id="searchIngredient" type="submit" class="btn" value="Search">
-          </form>
-          <div class="overflow-x-auto"></div>
-        </div>
-        <div id="personalInfoContainer" class="d-flex d-flex-col-md">
+        </section>
+        <div id="personalInfoContainer" class="d-flex d-flex-col-md mt-1rem-md">
           <ul id="profileInfo" class="personal-info mb-1rem mr-1rem-md flex-2"></ul>
-          <div class="flex-2">
+          <div id="resultLists" class="flex-2 d-none">
             <ul id="oneRepMaxInfo" class="personal-info mb-1rem"></ul>
           </div>
         </div>

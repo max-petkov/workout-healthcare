@@ -26,6 +26,7 @@ const formBMR = document.getElementById("bmr");
 const formWorkoutRoutine = document.getElementById("formWorkoutRoutine");
 const containerPersonalInfo = document.getElementById("personalInfoContainer");
 const nutritionSearch = document.getElementById("nutritionSearch");
+const foodResults = document.getElementById("foodResults");
 
 // Profile Object
 const profile = {
@@ -220,6 +221,7 @@ formOneRepMax.addEventListener("submit", function (e) {
     this.nextElementSibling.firstElementChild.textContent = `Result: ${profile
       .calcOneRepMax(+weight.value)
       .toFixed(1)} kg`;
+    document.getElementById("resultLists").classList.remove("d-none");
 
     if (oneRepMaxInfo.children.length > 0) {
       render1RMWithoutSave(exercise, weight);
@@ -405,53 +407,6 @@ oneRepMaxInfo.addEventListener("click", function (e) {
 });
 
 // AJAX CALL
-
-// JUST FOR TRAINING
-const foods = [
-  {
-    sugar_g: 1.2,
-    fiber_g: 2.2,
-    serving_size_g: 100.0,
-    sodium_mg: 10,
-    name: "potato",
-    potassium_mg: 70,
-    fat_saturated_g: 0.0,
-    fat_total_g: 0.1,
-    calories: 92.7,
-    cholesterol_mg: 0,
-    protein_g: 2.5,
-    carbohydrates_total_g: 21.0,
-  },
-  {
-    sugar_g: 2.6,
-    fiber_g: 1.2,
-    serving_size_g: 100.0,
-    sodium_mg: 4,
-    name: "tomato",
-    potassium_mg: 23,
-    fat_saturated_g: 0.0,
-    fat_total_g: 0.2,
-    calories: 18.2,
-    cholesterol_mg: 0,
-    protein_g: 0.9,
-    carbohydrates_total_g: 3.9,
-  },
-  {
-    sugar_g: 0.0,
-    fiber_g: 0.0,
-    serving_size_g: 100.0,
-    sodium_mg: 72,
-    name: "chicken",
-    potassium_mg: 179,
-    fat_saturated_g: 3.7,
-    fat_total_g: 12.9,
-    calories: 222.6,
-    cholesterol_mg: 92,
-    protein_g: 23.7,
-    carbohydrates_total_g: 0.0,
-  },
-];
-
 nutritionSearch.addEventListener("submit", function (e) {
   e.preventDefault();
   const textField = document.querySelector('input[name="nutrition"]');
@@ -459,22 +414,31 @@ nutritionSearch.addEventListener("submit", function (e) {
 
   validateName(textField);
 
-  renderNutrion(foods);
-
   if (validateName(textField)) {
     searchBtn.style.marginBottom = "0.4rem";
-    // const foodData = fetch(
-    //   `https://api.calorieninjas.com/v1/nutrition?query=${textField.value.trim()}`,
-    //   {
-    //     headers: {
-    //       "X-Api-Key": "V63a9SxI+/oDlMJZpwiggw==cIdeyS7mBdKdLuF9",
-    //     },
-    //   }
-    // )
-    //   .then((response) => response.json())
-    //   .then((food) => renderNutrion(food.items));
+    textField.nextElementSibling.innerHTML = "<h3>Loading data...</h3>";
 
-    // return foodData;
+    const foodData = fetch(
+      `https://api.calorieninjas.com/v1/nutrition?query=${textField.value.trim()}`,
+      { headers: { "X-Api-Key": "V63a9SxI+/oDlMJZpwiggw==cIdeyS7mBdKdLuF9" } }
+    )
+      .then((response) => response.json())
+      .then((food) => {
+        if (!food.items.length) {
+          textField.nextElementSibling.innerHTML = "";
+          foodResults.innerHTML =
+            '<h3 class="text-center mt-1rem">No results... 😢</h3>';
+        } else if (!foodResults.innerHTML) {
+          textField.nextElementSibling.innerHTML = "";
+          renderNutrion(food.items);
+        } else {
+          textField.nextElementSibling.innerHTML = "";
+          foodResults.innerHTML = "";
+          renderNutrion(food.items);
+        }
+      });
+
+    return foodData;
   } else {
     searchBtn.style.marginBottom = "0.4rem";
   }
