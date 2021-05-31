@@ -15,7 +15,7 @@ const loginOptions = document.getElementById("loginOptions");
 const greetings = document.getElementById("greetings");
 const showCalculators = document.getElementById("showCalculators");
 const generateMeals = document.getElementById("generateMeals");
-const mealsContainer = document.getElementById("mealsContainer");
+const nutritionContainer = document.getElementById("nutritionContainer");
 const navMenu = document.getElementById("navMenu");
 const introduction = document.getElementById("introduction");
 const calcContainer = document.querySelector(".calculators");
@@ -25,7 +25,7 @@ const formBMI = document.getElementById("bmi");
 const formBMR = document.getElementById("bmr");
 const formWorkoutRoutine = document.getElementById("formWorkoutRoutine");
 const containerPersonalInfo = document.getElementById("personalInfoContainer");
-const containerMeals = document.getElementById("mealsContainer");
+const nutritionSearch = document.getElementById("nutritionSearch");
 
 // Profile Object
 const profile = {
@@ -138,7 +138,6 @@ if (profileData) {
   greetings.classList.remove("d-none");
   greetings.classList.add("d-flex");
   profileLogIn.classList.remove("d-none");
-  profileLogIn.classList.add("d-flex");
 }
 
 if (profileData?.exercises) {
@@ -185,7 +184,7 @@ showCalculators.addEventListener("click", function () {
 generateMeals.addEventListener("click", function () {
   navMenu.parentElement.classList.toggle("d-none");
   fadeAnimation(navMenu);
-  inActiveElAnimation(mealsContainer);
+  inActiveElAnimation(nutritionContainer);
 });
 
 greetings.addEventListener("click", function () {
@@ -370,7 +369,7 @@ oneRepMaxInfo.addEventListener("click", function (e) {
     table.innerHTML = `<thead>
       <tr">
       <th class="p-1">№</th>
-      <th class="p-1">Perceteges %</th>
+      <th class="p-1">Perceteges(%)</th>
       <th>Weight(kg)</th>
       </tr>
       </thead>
@@ -388,7 +387,7 @@ oneRepMaxInfo.addEventListener("click", function (e) {
       table.lastElementChild.insertAdjacentHTML(
         "beforeend",
         `<tr>
-      <th class="p-1">${i + 1}.</th>
+      <td class="p-1">${i + 1}.</td>
       <td class="p-1">${(percent.toFixed(2) * 100).toFixed(0)} %</td>
       <td>${sum.toFixed(2)} kg</td>
     </tr>
@@ -402,5 +401,81 @@ oneRepMaxInfo.addEventListener("click", function (e) {
         showStatistics.nextElementSibling.remove();
       }, 300);
     }
+  }
+});
+
+// AJAX CALL
+
+// JUST FOR TRAINING
+const foods = [
+  {
+    sugar_g: 1.2,
+    fiber_g: 2.2,
+    serving_size_g: 100.0,
+    sodium_mg: 10,
+    name: "potato",
+    potassium_mg: 70,
+    fat_saturated_g: 0.0,
+    fat_total_g: 0.1,
+    calories: 92.7,
+    cholesterol_mg: 0,
+    protein_g: 2.5,
+    carbohydrates_total_g: 21.0,
+  },
+  {
+    sugar_g: 2.6,
+    fiber_g: 1.2,
+    serving_size_g: 100.0,
+    sodium_mg: 4,
+    name: "tomato",
+    potassium_mg: 23,
+    fat_saturated_g: 0.0,
+    fat_total_g: 0.2,
+    calories: 18.2,
+    cholesterol_mg: 0,
+    protein_g: 0.9,
+    carbohydrates_total_g: 3.9,
+  },
+  {
+    sugar_g: 0.0,
+    fiber_g: 0.0,
+    serving_size_g: 100.0,
+    sodium_mg: 72,
+    name: "chicken",
+    potassium_mg: 179,
+    fat_saturated_g: 3.7,
+    fat_total_g: 12.9,
+    calories: 222.6,
+    cholesterol_mg: 92,
+    protein_g: 23.7,
+    carbohydrates_total_g: 0.0,
+  },
+];
+
+nutritionSearch.addEventListener("submit", function (e) {
+  e.preventDefault();
+  const textField = document.querySelector('input[name="nutrition"]');
+  const searchBtn = document.getElementById("searchIngredient");
+
+  validateName(textField);
+
+  renderNutrion(foods);
+
+  if (validateName(textField)) {
+    searchBtn.style.marginBottom = "0.4rem";
+    // const foodData = fetch(
+    //   `https://api.calorieninjas.com/v1/nutrition?query=${textField.value.trim()}`,
+    //   {
+    //     headers: {
+    //       "X-Api-Key": "V63a9SxI+/oDlMJZpwiggw==cIdeyS7mBdKdLuF9",
+    //     },
+    //   }
+    // )
+    //   .then((response) => response.json())
+    //   .then((food) => renderNutrion(food.items));
+
+    // return foodData;
+  } else {
+    searchBtn.style.marginBottom = "0.4rem";
   }
 });

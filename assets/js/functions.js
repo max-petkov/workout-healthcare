@@ -101,7 +101,7 @@ const renderCalcNoSaveResults = function (ulId, titleText, result) {
     title.classList.add("mb-1", "text-underline");
     title.textContent = titleText;
     ul.appendChild(title);
-    containerPersonalInfo.appendChild(ul);
+    containerPersonalInfo.lastElementChild.appendChild(ul);
 
     ul.insertAdjacentHTML(
       "beforeend",
@@ -135,6 +135,86 @@ const renderGuestProfile = function () {
   calcContainer.classList.remove("d-none-md");
   profileInfo.remove();
 };
+
+function renderNutrion(foods) {
+  const table = document.createElement("table");
+  table.classList.add("mt-2rem");
+  nutritionContainer.lastElementChild.appendChild(table);
+  table.innerHTML = `
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Size(g)</th>
+      <th>Calories</th>
+      <th>TotalFat</th>
+      <th>SaturatedFat</th>
+      <th>Cholesterol</th>
+      <th>Carbohydrates</th>
+      <th>Protein</th>
+      <th>Sodium</th>
+      <th>Fiber</th>
+    </tr>
+  </thead>
+  <tbody></tbody>
+  <tfoot></tfoot>
+    `;
+
+  const size = [];
+  const kcal = [];
+  const fatTot = [];
+  const fatSat = [];
+  const chol = [];
+  const carbs = [];
+  const prot = [];
+  const sod = [];
+  const fib = [];
+  foods.forEach(function (obj) {
+    // Rendering food
+    table.lastElementChild.previousElementSibling.insertAdjacentHTML(
+      "beforeend",
+      `<tr>
+    <td>${obj.name}</td>
+    <td>${obj.serving_size_g}g</td>
+    <td>${obj.calories}kcal</td>
+    <td>${obj.fat_total_g}g</td>
+    <td>${obj.fat_saturated_g}g</td>
+    <td>${obj.cholesterol_mg}mg</td>
+    <td>${obj.carbohydrates_total_g}g</td>
+    <td>${obj.protein_g}g</td>
+    <td>${obj.sodium_mg}mg</td>
+    <td>${obj.fiber_g}g</td>
+    </tr>`
+    );
+    size.push(obj.serving_size_g);
+    kcal.push(obj.calories);
+    fatTot.push(obj.fat_total_g);
+    fatSat.push(obj.fat_saturated_g);
+    chol.push(obj.cholesterol_mg);
+    carbs.push(obj.carbohydrates_total_g);
+    prot.push(obj.protein_g);
+    sod.push(obj.sodium_mg);
+    fib.push(obj.fiber_g);
+  });
+
+  // Render total
+  table.lastElementChild.insertAdjacentHTML(
+    "beforeend",
+    `
+  <tr>
+    <th>Total:</th>
+    <th>${size.reduce((accum, val) => accum + val, 0)}g</th>
+    <th>${kcal.reduce((accum, val) => accum + val, 0).toFixed(1)}kcal</th>
+    <th>${fatTot.reduce((accum, val) => accum + val, 0).toFixed(1)}g</th>
+    <th>${fatSat.reduce((accum, val) => accum + val, 0).toFixed(1)}g</th>
+    <th>${chol.reduce((accum, val) => accum + val, 0).toFixed(1)}mg</th>
+    <th>${carbs.reduce((accum, val) => accum + val, 0).toFixed(1)}g</th>
+    <th>${prot.reduce((accum, val) => accum + val, 0).toFixed(1)}g</th>
+    <th>${sod.reduce((accum, val) => accum + val, 0).toFixed(1)}mg</th>
+    <th>${fib.reduce((accum, val) => accum + val, 0).toFixed(1)}g</th>
+  </tr>
+  `
+  );
+}
 
 const validateAge = function (age) {
   if (!age.value) {
@@ -185,8 +265,8 @@ const validateName = function (name) {
     renderErrorValid(name, "Field can not be empty!");
     return false;
   } else {
-    if (name.value.length >= 50) {
-      renderErrorValid(name, "Name must be lower than 50 symbols!");
+    if (name.value.length >= 100) {
+      renderErrorValid(name, "Name must be lower than 100 symbols!");
       return false;
     } else {
       renderSuccessValid(name, "OK!");
@@ -230,4 +310,9 @@ tippy("#infoBMR", {
 tippy("#infoWokoutRoutine", {
   content:
     "The Harris Benedict Equation is a formula that uses your BMR and then applies an activity factor to determine your total daily energy expenditure (calories).",
+});
+
+tippy("#infoNutrition", {
+  content:
+    "EXAMPLE SEARCHING: 100g potatoes and 200g tomato chicken etc... It'll display statistics for every food which is search + will calculate the total of kcal, protein, fat, etc... of the searched foods",
 });

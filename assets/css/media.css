@@ -52,7 +52,7 @@
   }
 
   .container {
-    padding: 0 2rem;
+    padding: 0 1.5rem;
   }
 
   .brand h3 {
@@ -80,6 +80,10 @@
   /* Sizing */
   .w-100-md {
     width: 100%;
+  }
+
+  .mr-1rem-md {
+    margin-right: 1rem;
   }
 
   /* UI Elements */
