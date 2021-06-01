@@ -430,7 +430,8 @@ nutritionSearch.addEventListener("submit", function (e) {
         }
       })
       .catch((error) => {
-        foodResults.innerHTML = error;
+        textField.nextElementSibling.innerHTML = "";
+        foodResults.innerHTML = `<h4 class="text-center mt-1rem">${error} 💥💥</h4>`;
       });
 
     return foodData;
