@@ -123,17 +123,7 @@ createProfile.addEventListener("submit", function (e) {
 // Render localStorage data
 if (profileData) {
   renderProfile(profileData);
-
-  createProfile.querySelector('input[name="name"]').value = profileData.name;
-  createProfile.querySelector('input[name="age"]').value = profileData.age;
-  createProfile.querySelector('input[name="weight"]').value =
-    profileData.weight;
-  createProfile.querySelector('input[name="height"]').value =
-    profileData.height;
-
-  createProfile.querySelector(
-    `[name="routine"][value="${profileData.routine}"]`
-  ).checked = true;
+  keepProfileFormValues();
 
   loginOptions.classList.add("d-none");
   greetings.classList.remove("d-none");
@@ -206,7 +196,7 @@ calcContainer.addEventListener("click", function (e) {
     .classList.toggle("rotate-chevron");
 });
 
-// One Rep Max Calculator
+// Calculators
 formOneRepMax.addEventListener("submit", function (e) {
   e.preventDefault();
 
@@ -368,12 +358,13 @@ oneRepMaxInfo.addEventListener("click", function (e) {
     const table = document.createElement("table");
     table.classList.add("mt-1rem", "mb-1rem");
     showStatistics.closest("li").appendChild(table);
-    table.innerHTML = `<thead>
-      <tr">
-      <th class="p-1">№</th>
-      <th class="p-1">Perceteges(%)</th>
-      <th>Weight(kg)</th>
-      </tr>
+    table.innerHTML = `
+      <thead>
+        <tr">
+          <th class="p-1">№</th>
+          <th class="p-1">Perceteges(%)</th>
+          <th>Weight(kg)</th>
+        </tr>
       </thead>
       <tbody></tbody>
       `;
@@ -411,35 +402,37 @@ nutritionSearch.addEventListener("submit", function (e) {
   e.preventDefault();
   const textField = document.querySelector('input[name="nutrition"]');
   const searchBtn = document.getElementById("searchIngredient");
+  searchBtn.style.marginBottom = "0.4rem";
 
   validateName(textField);
 
   if (validateName(textField)) {
-    searchBtn.style.marginBottom = "0.4rem";
     textField.nextElementSibling.innerHTML = "<h3>Loading data...</h3>";
-
     const foodData = fetch(
       `https://api.calorieninjas.com/v1/nutrition?query=${textField.value.trim()}`,
       { headers: { "X-Api-Key": "V63a9SxI+/oDlMJZpwiggw==cIdeyS7mBdKdLuF9" } }
     )
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok)
+          throw new Error(`Something went wrong... Status: ${response.status}`);
+
+        return response.json();
+      })
       .then((food) => {
         if (!food.items.length) {
           textField.nextElementSibling.innerHTML = "";
           foodResults.innerHTML =
             '<h3 class="text-center mt-1rem">No results... 😢</h3>';
-        } else if (!foodResults.innerHTML) {
-          textField.nextElementSibling.innerHTML = "";
-          renderNutrion(food.items);
         } else {
           textField.nextElementSibling.innerHTML = "";
           foodResults.innerHTML = "";
           renderNutrion(food.items);
         }
+      })
+      .catch((error) => {
+        foodResults.innerHTML = error;
       });
 
     return foodData;
-  } else {
-    searchBtn.style.marginBottom = "0.4rem";
   }
 });

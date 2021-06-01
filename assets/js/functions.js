@@ -59,6 +59,19 @@ const renderProfile = function (obj) {
   profileName.innerHTML = obj?.name;
 };
 
+const keepProfileFormValues = function () {
+  createProfile.querySelector('input[name="name"]').value = profileData.name;
+  createProfile.querySelector('input[name="age"]').value = profileData.age;
+  createProfile.querySelector('input[name="weight"]').value =
+    profileData.weight;
+  createProfile.querySelector('input[name="height"]').value =
+    profileData.height;
+
+  createProfile.querySelector(
+    `[name="routine"][value="${profileData.routine}"]`
+  ).checked = true;
+};
+
 const renderOneRepMax = function () {
   const title = document.createElement("h3");
   title.classList.add("mb-1", "text-underline");
@@ -134,7 +147,6 @@ const renderGuestProfile = function () {
   formProfile.firstElementChild.firstElementChild.textContent =
     "Create profile:";
   profileLogIn.classList.remove("d-none");
-  // profileLogIn.classList.add("d-flex");
   calcContainer.classList.remove("d-none-md");
   profileInfo.remove();
 };

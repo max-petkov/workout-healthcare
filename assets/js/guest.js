@@ -6,9 +6,7 @@ logInGuest.addEventListener("click", function () {
   loginOptions.style.transition = "0.5s";
   loginOptions.style.opacity = 0;
 
-  setTimeout(function () {
-    renderGuestProfile();
-  }, 500);
+  setTimeout(() => renderGuestProfile(), 500);
 });
 
 editProfile.addEventListener("click", function () {
