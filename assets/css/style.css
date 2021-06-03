@@ -75,6 +75,21 @@ input[type="radio"] {
   overflow-x: auto;
 }
 
+/* Scrollbar */
+div.custom-bar::-webkit-scrollbar {
+  height: 8px;
+}
+
+div.custom-bar::-webkit-scrollbar-thumb {
+  background: var(--color-dark--gray);
+  border-radius: 4px;
+}
+
+div.custom-bar::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px var(--color-dark--gray);
+  border-radius: 2px;
+}
+
 /* Tables */
 
 table {

@@ -408,7 +408,7 @@ nutritionSearch.addEventListener("submit", function (e) {
 
   if (validateName(textField)) {
     textField.nextElementSibling.innerHTML = "<h3>Loading data...</h3>";
-    const foodData = fetch(
+    fetch(
       `https://api.calorieninjas.com/v1/nutrition?query=${textField.value.trim()}`,
       { headers: { "X-Api-Key": "V63a9SxI+/oDlMJZpwiggw==cIdeyS7mBdKdLuF9" } }
     )
@@ -433,7 +433,5 @@ nutritionSearch.addEventListener("submit", function (e) {
         textField.nextElementSibling.innerHTML = "";
         foodResults.innerHTML = `<h4 class="text-center mt-1rem">${error} 💥💥</h4>`;
       });
-
-    return foodData;
   }
 });
